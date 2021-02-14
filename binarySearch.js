@@ -1,4 +1,10 @@
-// split and run
+// for finding an item from a sorted list of items. It works by repeatedly dividing in half the portion of the list that could contain the item
+// Worst complexity: O(log n)
+// Average complexity: O(log n)
+// Best complexity: O(1)
+// Space complexity: O(1)
+
+
 var arr = [6, 13, 14, 25, 33, 43, 51, 53, 64, 72, 84, 93, 95, 96, 97];
 
 

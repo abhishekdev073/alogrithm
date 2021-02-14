@@ -1,3 +1,10 @@
+// Worst complexity: n^2
+// Average complexity: n^2
+// Best complexity: n
+// Space complexity: 1
+
+//loop throuh all and compare and sort
+
 function insertionSort(input) {
     for (var i = 0; i < input.length; i++) {
         for (var j = i; j > 0; j--) {

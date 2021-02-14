@@ -10,7 +10,7 @@ function test1(arr) {
     }
     return result;
 }
-console.log('test1  ', test1(50));
+console.log('convert in binary  ', test1(50));
 
 function isArraySorted(arr) {
     for (var i = 0; i < arr.length - 1; i++) {

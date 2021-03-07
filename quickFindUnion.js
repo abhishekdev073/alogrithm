@@ -1,5 +1,9 @@
 //   1. QUICK FIND
-// it gives if two node are connected
+
+// union find :- keep track of data which are split into one or more disjoint sets . 
+//used in Grid or network connectivity, image processing if indices is connected 
+// UNION :- will join them
+// Find :- if its connected
 var arr1 = [0, 1, 9, 9, 9, 6, 6, 7, 8, 9];
 var arr = [0, 1, 2, 4, 4, 5, 6, 7, 8, 9]
 
@@ -120,6 +124,8 @@ unionQ(8, 0);
 unionQ(2, 3);
 unionQ(5, 6);
 console.log(`after union ${arr}`)
+
+
 
 reset();
 console.log(`befire unionWeighted ${arr}`)

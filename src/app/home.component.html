@@ -1,0 +1,52 @@
+<div class="row">
+     <div>
+       Pipe uppercase
+         {{'abhishek'|uppercase}}
+         <button (click)="trigger()">trigger</button>
+     </div>
+     <div>
+        <button type="submit" [attr.disabled]="''" class="btn btn-primary" >disable</button>
+        <input [disabled]="true" type="text" value="{{pageNo}}">
+     </div>
+    <label>2 way Input: {{title}}</label>
+    <input [(ngModel)]="title" placeholder="name" />
+    <br>
+    <label>1 way Input:{{fullName}}
+    </label>
+    <input #fullNameValue (keyup)="fullName =fullNameValue.value" value="{{fullName}}" placeholder="last Name" />
+    <br>
+    <button type="button" class="btn btn-primary" (click)="clickUpdateInput(fullNameValue.value)">Update Input</button>
+</div>
+
+<div class="row">
+    <div>Enbable click</div>
+    <div>
+        <input type="checkbox" [attr.checked]="checked ? checked : null" (click)="this.checked = !this.checked;">
+    </div>
+</div>
+
+<div class="row" *ngFor="let h of data">
+    <a (click)="checked == true ? clickedOnHero(h):false" href="javascript:void(0)" class="alert-link">{{ h.name}}</a>
+</div>
+<ng-template [ngIf]="user">
+    <div class="row">
+        <input (keyup)="user.name=temp.value" type="text" #temp/>
+          Selected user name is {{user?.name}}
+    </div>
+    <div>
+        <detail [parrentData]="user"></detail>
+    </div>
+
+</ng-template>
+
+
+<div class="row">
+    <input type="button" (click)="this.show = true;" value="Show" />
+    <input type="button" (click)="this.show = false;" value="Hide" />
+    <div *ngIf="show">
+        show is enabled
+    </div>
+    
+</div>
+{{heroData|json}}
+<app-chilld name="abhishek"></app-chilld>

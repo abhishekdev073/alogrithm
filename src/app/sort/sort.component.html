@@ -1,0 +1,149 @@
+<p>
+  sort works!
+</p>
+<div>
+  <input [(ngModel)]="totalReord" type="number">
+  <button type="button" (click)="generateRandomData()" class="btn btn-primary">Reset</button>
+  <input class="pl_5 ml_5" (change)="checked = !checked" type="checkbox" [checked]="checked">
+  <span *ngIf="time" class="pl_5 fr">time {{time}}</span>
+
+</div>
+<div class="button">
+  <button type="button" (click)="bubbleSort(1)" class="btn btn-primary">bubble Sort </button>
+  <button type="button" (click)="insertionSort(2)" class="btn btn-primary">Insertion sort</button>
+  <button type="button" (click)="heapSort(7)" class="btn btn-primary">heap Sort</button>
+
+  <button type="button" (click)="selectionSort(3)" class="btn btn-primary">Selection sort</button>
+  <button type="button" (click)="shellSort(4)" class="btn btn-primary">Shell sort</button>
+  <button type="button" (click)="quickSort(5)" class="btn btn-primary">quick Sort</button>
+  
+  <button type="button" (click)="mergeSort(6)" class="btn btn-primary">Merge sort</button>
+ 
+</div>
+<div id="container"> </div>
+<div class="explain">
+  <div [ngSwitch]="active">
+    <div class="sort_elment" *ngSwitchCase="1">
+      bubble sort
+      <ul>
+        <li>Highest element goes to end</li>
+        <li>
+         Compare with next element if its greater then swap
+        </li>
+        <li>
+          Worst and Average Case Time Complexity: O(n*n). Worst case occurs when array is reverse sorted.
+        </li>
+        <li>
+          To much swap if starting element it Big
+          </li>
+          <li>
+            slow so many data to many swap
+          </li>
+      </ul>
+    </div>
+    <div class="sort_elment" *ngSwitchCase="2">
+      <div>Insertion sort</div>
+      <ul>
+        <li>
+         If current (a[i]) element is greater than its prvious element(a[i--]) shift previous element by
+         a[j+1] = a[j]; and a[j+1] = a[i] 
+         </li>
+        <li>
+        We check in previous value shift all value which are greater than current value and place current
+        value at its place ie. array remail sorted till i 
+        </li>
+         <li>
+          Time Complexity: O(n*2)
+         </li>
+         <li>
+         To much swap if ending element it small
+         </li>
+         <li>
+          slow so many data to many swap
+        </li>
+      </ul>
+    </div>
+    <div class="sort_elment" *ngSwitchCase="3">
+      <div>Selection sort</div>
+      <ul>
+        <li>
+          Small element comes at first
+         </li>
+        <li>
+          selet the smallest element replace with current :- repeat 
+        </li>
+         <li>
+          Time Complexity: O(n2)
+         </li>
+      </ul>
+    </div>
+    <div class="sort_elment" *ngSwitchCase="4">
+      Shell sort
+      <li>
+       It work as insertion sort. we compare a[j] with a[j-h] and swap keep doing it till h =1
+      </li>
+      <li>
+       Instead of comparing to all element we sort with h gap  h = 3h +1 && h < data.length
+       we keep decreasing the gap till 1
+      </li>
+      <li>
+       sorting alogrithm : O(n*n)
+      </li>
+    </div>
+    <div class="sort_elment" *ngSwitchCase="5">
+      quick sort
+      <li>
+        Divide and conqure
+      </li>
+      <li>
+        We create partition use it in recursion. Partition we divide array in 2 parts based
+        pivot value that is last element
+      </li>
+      <li>
+        It get divided into 2 parts left is less than pivot value and right is greater
+      </li>
+      <li>
+       sorting alogrithm : O(n*n)
+      </li>
+    </div>
+    <div class="sort_elment" *ngSwitchCase="6">
+      Merge sort
+      <ul>
+        <li>
+          Divide and conqure ie. divide and merge 
+        </li>
+        <li>
+        Best sorting alogrithm : O(nlog(n))
+        </li>
+      </ul>
+    </div>
+    <div class="sort_elment" *ngSwitchCase="7">
+      Heap Sort
+      <ul>
+        <li>Priority queue</li>
+        <li>heapify :- current node should be grater than its children</li>
+        <li>
+          parent is greater than child. priority queue Max heap or min heap
+        </li>
+        <li>
+          heap visualize as array nearly binary tree
+        </li>
+        <li>
+          We have to heapify only n/2 element (Because lower half does not have any child)
+        </li>
+        <li>
+          For sorting heapify array. create new array of result with same size<br>
+          Now replace first element with last elemnt<br>
+          store first element in different array (result) in last position<br>
+          now reduce the array size by 1<br>
+          keep doing till arr.length ==0         
+
+        </li>
+      </ul>
+      <pre>
+        <code [innerHTML]="code[7]"></code>
+      </pre>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<p>
+  date works!
+</p>
+<label>
+  Date Time:
+  <owl-date-time [(ngModel)]="startDateTime" (onFocus)="setStartDate();" [min]="currentDate" [locale]="en"
+  placeHolder="Select End Time" dateFormat="M/D/YYYY hh:mm A"></owl-date-time>
+
+</label>

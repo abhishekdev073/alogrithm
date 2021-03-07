@@ -1,0 +1,21 @@
+<div>
+    <h1> Child Component</h1>
+    <div class="row">Parent Click {{parrentData?.name}}</div>
+    <div class="row">
+        Parent  Data -
+        <p> {{getGetFromController()}}</p>
+    </div>
+
+    <div class="row">
+        <p [ngClass]="'row'">class</p>
+    </div>
+
+    <div class="row">
+        INHERITANCE DATA -
+        <p>{{hero.name}}</p>
+    </div>
+    <h1>  Child Component Ends</h1>
+</div>
+
+
+<button *ngIf="show" (click)="action()">Action </button>

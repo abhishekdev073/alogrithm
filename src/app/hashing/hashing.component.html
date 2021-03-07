@@ -1,0 +1,61 @@
+<p>
+  hashing works!
+</p>
+
+<div>
+  <ul>
+    <li>
+      Data get stored in array
+    </li>
+    <li>
+      Hast table:- javascript object uses hashing. Other language use hashing for dictionary like python
+    </li>
+    <li>
+      hash table :- holy grail of data structure take constant time in find insert delete O(1)
+    </li>
+    <li>
+      Hash function :- Hashing uses hash function which return the hashcode like index which is used to access and store
+      the data
+    </li>
+    <li>
+      hash = hashfunc(key) <br>
+      index = hash % array_size<br>
+      Hash function should be good it should have less collision
+    </li>
+    <li>
+      Some time different keys gives same hashcode this is called hashing collision
+      To fix this we user
+      1. Linear probing - (open addressing or closed hashing)
+      2. Separate chaining (open hashing)
+    </li>
+    <li>
+      Linear Probing :-
+      <ul>
+        <li>
+          If hashcode alreay has value then we find the next empty cell<br>
+        </li>
+        <li>
+          It is better than Open hashing if we maintain the load factor <br>
+        </li>
+        <li>
+          increase array size if number element increases ie thresold load factor <br>
+        </li>
+        <li>
+          Load factor = No of item in array/ array size == 0.667
+        </li>
+        <li>
+          linear probing function :- P(x) = ax +b;
+        </li>
+      </ul>
+    <li>
+      Separate chaining (open hashing) :- We uses link list to store the key and value
+    </li>
+    <li>
+      Probing function :- We need good probing function that will repeat n place.
+      Dont get stuck repeating same thing
+    </li>
+  </ul>
+</div>
+<div>
+
+</div>

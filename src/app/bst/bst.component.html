@@ -1,0 +1,107 @@
+
+  <div>BST - Binary Search Tree</div> 
+  <input [(ngModel)]="randomNo" >
+  <button (click)="generateRandomData(false)">Add</button>
+  <button (click)="generateRandomData(true)">AddAVL</button>
+  <button (click)="clear()">Clear</button>
+  <button (click)="search()">Search</button>
+  <button (click)="remove()">Delete</button>
+  <button (click)="height()">Hieght</button>{{h}}
+  <ul>
+    BST
+   
+    <li>
+      Combination of list and array
+    </li>
+    <li>
+      Left node should be less
+    </li>
+    <li>
+      Right node should be equal or greater
+    </li>
+    <li>
+      Take O log(n) in search delete and insert
+    </li>
+  </ul>
+  <ul>
+    <li>
+      BST takes O(n) time for search delete n insert in worst case due to its height. To fix this We use AVL or Red black tree
+    </li>
+    <li>
+      AVL :- Its Balanced binary tree
+    </li>
+    <li>
+      Its height is log(n);
+    </li>
+    <li>
+      Height absolute difference is always  <=1
+    </li>
+    <li>
+      while inserting or deleting node we maintian the height by rotation
+    </li>
+  </ul>
+<div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <ul>
+      Tree Traversal :- loop through tree item
+      <li>
+      <button (click)="preOrder()">PreOrder</button>    :-  Print before recursion :- print from top to bottom left 
+      </li>
+      <li>
+        <button (click)="inOrder()">InOrder</button>  :-  Print between recursion, print in sorted
+      </li>
+      <li>
+        <button (click)="postOrder()"> PostOrder</button>   :-  Print after recursion
+      </li>
+      <li>
+        <button (click)="inLineOrder()"> INLineOrder</button>   :-  print horizontally : BFS:- Breadth first search
+      </li>
+      
+    </ul>
+  </div>
+  <div class="col-sm-6">
+    {{orderData}}
+  </div>
+</div>
+
+<div *ngFor="let data of BSTData" class="item-collection">
+  <div *ngFor="let item of data" class="item">
+    <span>{{item}}</span> 
+  </div>
+</div>
+
+
+<div>
+  <pre>
+    <code>
+      /*                  Right rotation 
+        50            40                  E                     C
+      /    \         /   \               /  \                  /  \
+     40     80     30     50            C    F     ====>      B     E
+    /  \                 /   \        /  \                        /   \
+  30   45               45    80      B    D                      D      F
+   
+    
+    1. CE  move to the right
+    2. Highest elemnt of left ie. D :- node.left.right goes to lowest place of right
+    ie :- node.right.left
+      
+        D                                       D                                
+       /                                       /
+      B   ====> Require right rotation        B    ===> Require left right rotaion
+     /                                         \ 
+    A 
+    
+        D                                       D                                
+         \                                       \
+          F   ====> Require left rotation         F     ===> Require right left rotaion
+           \                                     / 
+             H                                  E
+    
+     
+    */
+    </code>
+  </pre>
+</div>

@@ -1,0 +1,7 @@
+.item-collection{
+    display: flex;
+    justify-content: center;
+}
+.item span{
+   padding-left: 50px;
+}

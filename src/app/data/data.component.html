@@ -1,0 +1,31 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let data1 of data; let i =index">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h6>
+                    {{i+1}} {{data1.question}}
+
+                </h6>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="text_background">
+            <div *ngFor="let response of data1.responses">
+                <div class="question_value">
+                    <p> {{response.value}}</p>
+                </div>
+                <div ngClass="mt5" *ngIf="response.image" class="code_snippet">
+                     <mat-divider></mat-divider>
+                    <img [src]="imageBaseUrl + response.image">
+                     <mat-divider></mat-divider>
+
+                </div>
+                <div class="question_description">
+                    <div *ngFor="let val of response.desc">
+                        <p> {{val}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </mat-expansion-panel>
+</mat-accordion>

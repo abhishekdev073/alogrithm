@@ -1,0 +1,11 @@
+.nav-bar {
+    line-height: 60px;
+    font-size: 16px;
+}
+.nav-bar .active{
+    color: rgb(97, 218, 251);
+}
+.nav-bar a{
+    color: var(--white);
+    padding-left: 13px;
+}

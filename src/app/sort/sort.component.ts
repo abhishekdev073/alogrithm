@@ -14,13 +14,16 @@ export class SortComponent implements OnInit {
   time = 0;
   dataForGraph = [];
   active = 0;
-  code=[];
+  code = [];
   constructor() { }
 
   ngOnInit() {
-    this.generateRandomData();
+    setTimeout(() => {
+      this.generateRandomData();
+
+    }, 1000);
     this.code.length = 10;
-    this.code[7]=`
+    this.code[7] = `
     heapify(arr) {
       var n = Math.floor(arr.length / 2);
       for (var i = n; i >= 0; i--) {
@@ -267,6 +270,7 @@ export class SortComponent implements OnInit {
         time += 200
         setTimeout(x => {
           this.randomData = this.dataForGraph[i];
+
           this.renderGraph()
         }, time)
 
@@ -298,11 +302,11 @@ export class SortComponent implements OnInit {
       arr.length--
       arr = this.heapify(arr)
     }
-     this.randomData = data;
-     var t2 = new Date();
-     var dif = t2.getTime() - t1.getTime();
-     this.time = dif / 1000;
-     this.renderGraph();
+    this.randomData = data;
+    var t2 = new Date();
+    var dif = t2.getTime() - t1.getTime();
+    this.time = dif / 1000;
+    this.renderGraph();
   }
   merge(arr) {
     if (arr.length <= 1) {

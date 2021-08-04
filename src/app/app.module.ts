@@ -4,63 +4,59 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home.component';
-import { DetailsComponent } from './details.component';
-import { HeroComponent } from './hero.component';
-import { HerosComponent } from './heros.component';
-import { BaseComponent } from './base.component';
-import { HttpClientModule } from '@angular/common/http';
-import { HighlightDirective } from './highlight.directive';
-import { HighlightdirComponent } from './highlightdir/highlightdir.component';
-import { FullCalendarModule } from '@fullcalendar/angular';
-import { ChilldComponent } from './chilld/chilld.component';
-import { DateComponent } from './date/date.component';
-import {  DateTimePickerModule } from 'ng-pick-datetime';
 import { HeroService } from './services/service';
 import { Service1Service } from './services/service1.service';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { FirstComponent } from './first/first.component';
-import { SecondComponent } from './second/second.component';
 import { httpInterceptorProviders } from 'src/interceptor';
-import { UppercasePipe } from './uppercase.pipe';
 import { SortComponent } from './sort/sort.component';
 import { HighchartsChartComponent } from 'highcharts-angular';
-import { ListComponent } from './list/list.component';
 import { HashingComponent } from './hashing/hashing.component';
 import { BSTComponent } from './bst/bst.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAccordion, MatButtonModule, MatButtonToggleModule, MatDividerModule, MatExpansionModule, MatIconModule, MatMenuModule, MatTabsModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
+import { ListComponent } from './list/list.component';
+import { DataStructureComponent } from './data-structure/data-structure.component';
+import { AngularComponent } from './angular/angular.component';
+import { SafePipe } from './safe.pipe';
+import { DataComponent } from './data/data.component';
+import { JavascriptComponent } from './javascript/javascript.component';
+import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
+import { CssComponent } from './css/css.component';
  
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    DetailsComponent,
-    HeroComponent,
-    HerosComponent,
-    BaseComponent,
-    HighlightDirective,
-    HighlightdirComponent,
-    ChilldComponent,
-    DateComponent,
     NotFoundComponent,
-    FirstComponent,
-    SecondComponent,
-    UppercasePipe,
     SortComponent,
     HighchartsChartComponent,
-    ListComponent,
     HashingComponent,
-    BSTComponent
+    BSTComponent,
+    ListComponent,
+    DataStructureComponent,
+    AngularComponent,
+    SafePipe,
+    DataComponent,
+    JavascriptComponent,
+    HeaderComponent,
+    HomeComponent,
+    CssComponent,
 
   ],
   imports: [
-    DateTimePickerModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FullCalendarModule
-   
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatButtonToggleModule
   ],
   providers: [
     Service1Service,

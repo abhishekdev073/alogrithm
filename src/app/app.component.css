@@ -1,0 +1,26 @@
+.header{
+    background-color: #20232a;
+    height: 60px;
+    padding-left: 150px;
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+.main-body{
+    width: 100%;
+    margin:auto;
+}
+.scroll-to-top {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    opacity: 0;
+    z-index: 1;
+    transition: all .2s ease-in-out;
+   }
+   .show-scrollTop {
+    opacity: 1;
+    transition: all .2s ease-in-out;
+   }

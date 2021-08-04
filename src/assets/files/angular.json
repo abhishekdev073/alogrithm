@@ -1,0 +1,21 @@
+[{
+        "question": "Angular Command",
+        "response": [
+            "npm install -g @angular/cli@latest",
+            "ng new my-first-angular",
+            "ng serve",
+            "heffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffloo"
+        ]
+
+    },
+    {
+        "question": "Angular Command",
+        "response": [
+            "npm install -g @angular/cli@latest",
+            "ng new my-first-angular",
+            "ng serve",
+            "ng generate component xyz"
+        ]
+    },
+
+]

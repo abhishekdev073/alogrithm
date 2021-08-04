@@ -1,0 +1,498 @@
+<mat-tab-group mat-align-tabs="center" animationDuration="0ms">
+  <mat-tab label="Tricks">
+    <div>
+      <h6>// clear float</h6>
+      <p>If we have use float and element size is bigger that its parent then
+        goes to below to avoid that use clear fix increase parent size fit in </p>
+      <div>
+        <div> .clearfix::after </div>
+        <div> content: "";</div>
+        <div> clear: both;</div>
+        <div> display: table;</div>
+        <div>  </div>
+      </div>
+    </div>
+    <p>
+      // use vertical-align :-top :- if div goes to bottom
+    </p>
+    <p>
+      Take item to centre
+    </p>
+    <p>1. Padding, text-align</p>
+    <div class="border center1">
+      <div> padding: 20px; </div>
+      <div>text-align: center;
+      </div>
+    </div>
+    <p>2. margin, width</p>
+    <div class="border center2">
+      <div> margin: auto; </div>
+      <div> width: 50%;</div>
+    </div>
+    <p>3. position, transform</p>
+    <div>
+      /* If the text has multiple lines, add the following: */
+      <div> .center p </div>
+      <div> line-height: 1.5;</div>
+      <div> display: inline-block;</div>
+      <div> vertical-align: middle;</div>
+
+    </div>
+    <div class="border center3">
+      <div> position: absolute;</div>
+      <div> top: 50%;</div>
+      <div> left: 50%;</div>
+      <div> transform: translate(-50%, -50%);</div>
+      <p>
+        Center
+      </p>
+    </div>
+    <p>4. flex</p>
+    <div [style.height]="'300px'" class="flex">
+      <div [style.margin]="'auto'" class="flex-item"> margin: auto; </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Grid">
+    <div class="question">
+      <ul>
+        <li>display :grid, inline-grid takes only required space //makes Grid</li>
+        <li>grid-template-columns: auto auto auto; 80px 200px auto; makes 3 column based on value</li>
+        <li>grid-template-rows: 80px 200px; works on row</li>
+        <li>grid-column-gap: 50px;</li>
+        <li>grid-raw-gap: 50px;</li>
+        <li>grid-gap: 50px 100px; row column</li>
+      </ul>
+      <div>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle (click)="style={'display':'grid'}">Grid</mat-button-toggle>
+          <mat-button-toggle (click)="style={'display':'inline-grid'}">Inline grid</mat-button-toggle>
+          <mat-button-toggle (click)="style={'grid-template-columns':'auto auto'}">auto auto</mat-button-toggle>
+          <mat-button-toggle (click)="style={'grid-template-columns':' 80px 200px auto'}"> 80px 200px auto
+          </mat-button-toggle>
+          <mat-button-toggle (click)="style={'grid-template-rows':'40px 100px'}">Template rows</mat-button-toggle>
+          <mat-button-toggle (click)="style={'grid-column-gap':'25px'}">column gap</mat-button-toggle>
+          <mat-button-toggle (click)="style={'grid-row-gap':'25px'}"> raw gap</mat-button-toggle>
+          <mat-button-toggle (click)="style={'grid-gap':'25px 50px'}">Gap</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div [ngStyle]="style" class="grid-container">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+        <div class="grid-item">10</div>
+      </div>
+    </div>
+    <div class="question">
+      <div>
+        <p>
+          justify-content: space-evenly,space-around,space-between,center,start,end :- horizontal alignment
+        </p>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle (click)="style2={'justify-content':''}">Reset</mat-button-toggle>
+          <mat-button-toggle (click)="style1={'justify-content':'start'}">start</mat-button-toggle>
+          <mat-button-toggle (click)="style1={'justify-content':'center'}">center</mat-button-toggle>
+          <mat-button-toggle (click)="style1={'justify-content':'end'}">end</mat-button-toggle>
+          <mat-button-toggle (click)="style1={'justify-content':'space-evenly'}">space-evenly</mat-button-toggle>
+          <mat-button-toggle (click)="style1={'justify-content':'space-between'}">space-between</mat-button-toggle>
+          <mat-button-toggle (click)="style1={'justify-content':'space-around'}">space-around</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div [ngStyle]="style1" class="grid-container">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+        <div class="grid-item">10</div>
+      </div>
+    </div>
+    <div class="question">
+      <div>
+        <h6>
+          align-content: space-evenly,space-around,space-between,center,start,end; :- vertical handle
+        </h6>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle (click)="style2={'align-content':''}">Reset</mat-button-toggle>
+          <mat-button-toggle (click)="style2={'align-content':'start'}">start</mat-button-toggle>
+          <mat-button-toggle (click)="style2={'align-content':'center'}">center</mat-button-toggle>
+          <mat-button-toggle (click)="style2={'align-content':'end'}">end</mat-button-toggle>
+          <mat-button-toggle (click)="style2={'align-content':'space-evenly'}">space-evenly</mat-button-toggle>
+          <mat-button-toggle (click)="style2={'align-content':'space-between'}">space-between</mat-button-toggle>
+          <mat-button-toggle (click)="style2={'align-content':'space-around'}">space-around</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div [ngStyle]="style2" class="grid-container">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+        <div class="grid-item">10</div>
+      </div>
+    </div>
+    <h2>
+      Grid -item
+    </h2>
+    <div class="question">
+      <div>
+        <ul>
+          <li> grid-row-start: 1 grid-row-end :3 grid-column-start: 1 grid-column-end :3 same</li>
+          <li> grid-column: 1 / 5; start at 1 and end at 5</li>
+          <li> grid-column: 1 / span 3; start at 1 take 3 column</li>
+          <li> grid-row: 1 / 4;</li>
+          <li> grid-row: 1 / span 2;</li>
+          <li> grid-area: 1 / 2 / 5 / 6; row from 1-5 column 5-6</li>
+          <li> grid-area: 2 / 1 / span 2 / span 3;. row start 2 left 2 span column start at 1 left 3 span</li>
+        </ul>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle (click)="style3={'grid-row-start':'1'}">grid-row-start</mat-button-toggle>
+          <mat-button-toggle (click)="style3={'grid-column':'1/5'}">grid-column 1/5</mat-button-toggle>
+          <mat-button-toggle (click)="style3={'grid-column':'1 / span 3'}">grid-column 1 / span 3</mat-button-toggle>
+          <mat-button-toggle (click)="style3={'grid-row':'1 / 4'}">grid-row 1/4</mat-button-toggle>
+          <mat-button-toggle (click)="style3={'grid-row':'1 / span 2'}">grid-row 1/span 2</mat-button-toggle>
+          <mat-button-toggle (click)="style3={'grid-area':'1/2/5/6'}">grid-area 1</mat-button-toggle>
+          <mat-button-toggle (click)="style3={'grid-area':'2 / 1 / span 2 / span 3'}">grid-area 2</mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <div class="grid-container">
+        <div [ngStyle]="style3" class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item">9</div>
+        <div class="grid-item">10</div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Basic">
+    <div>
+      <div class="box">
+        <div class="box-item border">
+          <div class="q_border border_y">
+            <p> border : 1px solid yellow</p>
+          </div>
+        </div>
+        <div class="box-item border q_padding">
+          100px
+          padding-top: 100px;
+          <div>Leave space inside div</div>
+        </div>
+        <div class="box-item border">
+          100px
+          <div class="q_margin border_y">
+            margin-top: 100px;
+            <div>Leave space form outside div</div>
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="box-item border">
+          <div class="q_border border_y">
+            <div class="code">
+              box-sizing: border-box;
+            </div>
+            <div>margin padding take from its width</div>
+          </div>
+        </div>
+        <div class="box-item border q_padding">
+          text-align: center;
+          <div>text-align: justify; justify,left right center gives space </div>
+        </div>
+        <div class="box-item border">
+          <div>
+            display :block //start with new line takes width 100%
+          </div>
+          <div>
+            display :inline // inline with same line don't take height and width
+          </div>
+          <div>
+            display :inline-block // same line takes width and height
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <div>
+          <h6>positions positioned using the top, bottom, left, and right</h6>
+          <div class="pos1">
+            <p>1.Static :-Default</p>
+            <div class="p-box1">
+              box1
+              <div class="p-box2">
+                box 2
+              </div>
+            </div>
+          </div>
+          <div class="pos1">
+            <p> 2. relative :- its moves from its original position</p>
+            <div class="p-box1">
+              box1
+              <div class="p-box2 p-relative">
+                box 2
+                <div> position: relative;</div>
+                <div> top: 80px;</div>
+                <div> left: 150px;</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pos1">
+            <p>3 fixed :-position remains fixed to the viewport</p>
+            <div class="p-box1">
+              box1
+              <div> position: fixed;</div>
+              <div> bottom: 0px;</div>
+              <div> left: 0px;</div>
+              box2
+
+              <div class="p-box2 p-fixed">
+                fixed
+              </div>
+            </div>
+          </div>
+          <div class="pos1">
+            <p>absolute :-If parent is not positioned it get
+              relative to the body. its get relative to its parent. just like fixed get relative to view port
+            </p>
+            <div class="p-box1">
+              box1
+              <div class="p-box2 p-absolute">
+                box2
+                <div> position: absolute;</div>
+                <div> bottom: 100px</div>
+                <div> left: 100px </div>
+              </div>
+            </div>
+          </div>
+          <div class="pos1">
+            <p> 5. sticky :- get sticky like menu with scroll </p>
+            <div class="p-box1" [ngStyle]="{'overflow':'scroll'}" [style.height]="'300px'">
+              box1
+              <!-- <div>
+Sample text for scroll
+              </div> -->
+              <div>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum,
+                nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec
+                congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis
+                sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue.
+                Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet
+                sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non
+                fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi
+                lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec
+                congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis
+                sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue.
+                Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet
+                sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non
+                fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit. Lorem
+                ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi
+                lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec
+                congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis
+                sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue.
+                Nunc sagittis </div>
+              <div class="p-box2 p-sticky">
+                box2
+                <div> position: sticky;</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-sticky"></div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Flex">
+    <div class="flex-container1">
+      <h1>
+        Flex
+      </h1>
+      <p>
+        Flex : adjust automatically
+      </p>
+      <div class="flex">
+        <div class="flex-item border">Item1</div>
+        <div class="flex-item border">Item2</div>
+        <div class="flex-item border">Item3</div>
+        <div class="flex-item border">Item4</div>
+      </div>
+      <div>
+        <p>
+          justify-content :flex-start :- Handle flex-items horizontally
+        </p>
+        <p>
+          flex-start, flex-end, center, space-between, space-around
+        </p>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle (click)="justifyContent='flex-start'">Flex Start</mat-button-toggle>
+          <mat-button-toggle (click)="justifyContent='flex-end'">Flex end</mat-button-toggle>
+          <mat-button-toggle (click)="justifyContent='center'">Center</mat-button-toggle>
+          <mat-button-toggle (click)="justifyContent='space-between'">Space-between</mat-button-toggle>
+          <mat-button-toggle (click)="justifyContent='space-around'">space-around</mat-button-toggle>
+        </mat-button-toggle-group>
+        <div [style.justify-content]="justifyContent" class="flex">
+          <div class="flex-item border1">Item1</div>
+          <div class="flex-item border1">Item2</div>
+          <div class="flex-item border1">Item3</div>
+          <div class="flex-item border1">Item4</div>
+        </div>
+      </div>
+      <div class="question">
+        <p>
+          align-items: flex-start || handel vertical
+        </p>
+        <p>
+          align-items: flex-start,flex-end,center,baseline,stretch : vertical
+        </p>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle (click)="alignItem='flex-start'">Flex Start</mat-button-toggle>
+          <mat-button-toggle (click)="alignItem='flex-end'">Flex end</mat-button-toggle>
+          <mat-button-toggle (click)="alignItem='center'">Center</mat-button-toggle>
+          <mat-button-toggle (click)="alignItem='baseline'">Baseline</mat-button-toggle>
+          <mat-button-toggle (click)="alignItem='stretch'">Stretch</mat-button-toggle>
+        </mat-button-toggle-group>
+        <div [style.align-items]="alignItem" class="flex-container">
+          <div [ngStyle]="{'padding-top': '20px'}" [style.height]="'100px'" class="flex-item1 border1">Item1</div>
+          <div [ngStyle]="{'padding-top': '10px'}" [style.height]="'75px'" class="flex-item1 border1">Item2</div>
+          <div [ngStyle]="{'padding-top': '30px'}" [style.height]="'120px'" class="flex-item1 border1">Item3</div>
+          <div [ngStyle]="{'padding-top': '5px'}" class="flex-item1 border1">Item4</div>
+        </div>
+      </div>
+      <div class="question">
+        <p>
+          flex-wrap: wrap; less space content goes to next line
+        </p>
+        <p>
+          flex-wrap: wrap|| nowrap
+        </p>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle (click)="wrap='wrap'">Wrap</mat-button-toggle>
+          <mat-button-toggle (click)="wrap='nowrap'">No wrap</mat-button-toggle>
+        </mat-button-toggle-group>
+        <div [style.flex-wrap]="wrap" class="flex-container">
+          <div class="flex-item border1">Item1</div>
+          <div class="flex-item border1">Item2</div>
+          <div class="flex-item border1">Item3</div>
+          <div class="flex-item border1">Item4</div>
+          <div class="flex-item border1">Item5</div>
+          <div class="flex-item border1">Item6</div>
+        </div>
+      </div>
+      <div class="question">
+        <p>
+          align-content: flex-start || align to baseline
+        </p>
+        <p>
+          align-content:stretch,flex-start,flex-end,center,space-between,space-around :
+        </p>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle (click)="alignContent='flex-start'">Flex Start</mat-button-toggle>
+          <mat-button-toggle (click)="alignContent='flex-end'">Flex end</mat-button-toggle>
+          <mat-button-toggle (click)="alignContent='center'">Center</mat-button-toggle>
+          <mat-button-toggle (click)="alignContent='space-between'">Space between</mat-button-toggle>
+          <mat-button-toggle (click)="alignContent='space-around'">Space around</mat-button-toggle>
+        </mat-button-toggle-group>
+        <div [ngStyle]="{'align-content':alignContent,'flex-wrap':'wrap'}" class="flex-container">
+          <div class="flex-item border1">Item1</div>
+          <div class="flex-item border1">Item2</div>
+          <div class="flex-item border1">Item3</div>
+          <div class="flex-item border1">Item4</div>
+          <div class="flex-item border1">Item5</div>
+          <div class="flex-item border1">Item6</div>
+        </div>
+
+        <h2>Flex -item</h2>
+        <div class="question">
+          <p>
+            order : 3 \\ change the position of child
+          </p>
+          <p>
+            margin-left :auto \\ it will push all item to left
+          </p>
+          <p>
+            margin: auto; \\to takes item in center
+          </p>
+          <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle (click)="style={'order':'3'}">Order</mat-button-toggle>
+            <mat-button-toggle (click)="style={'margin-left':'auto'}">Margin left</mat-button-toggle>
+            <mat-button-toggle (click)="style={'margin':'auto'}">margin auto</mat-button-toggle>
+          </mat-button-toggle-group>
+          <p>Example with 1 div</p>
+          <div class="flex">
+            <div [ngStyle]="style" class="flex-item border1">Item1</div>
+          </div>
+          <p>Example with 3 div</p>
+          <div class="flex">
+            <div [ngStyle]="style" class="flex-item border1">Item1</div>
+            <div [ngStyle]="style" [style]="style.order" class="flex-item border1">Item2</div>
+            <div [ngStyle]="style" class="flex-item border1">Item3</div>
+          </div>
+        </div>
+      </div>
+      <div class="question">
+        <p>
+          align-self :- flex-start \\ child override the align-item
+        </p>
+        <p>
+          flex-start,flex-end,center,baseline,stretch
+        </p>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle (click)="alignSelf='flex-start'">Flex Start</mat-button-toggle>
+          <mat-button-toggle (click)="alignSelf='flex-end'">Flex end</mat-button-toggle>
+          <mat-button-toggle (click)="alignSelf='center'">Center</mat-button-toggle>
+          <mat-button-toggle (click)="alignSelf='baseline'">Baseline</mat-button-toggle>
+          <mat-button-toggle (click)="alignSelf='stretch'">Stretch</mat-button-toggle>
+        </mat-button-toggle-group>
+        <div class="flex-container">
+          <div [style.align-self]="alignSelf" [style.height]="'100px'" class="flex-item1 border1">Item1</div>
+          <div [ngStyle]="{'padding-top': '20px'}" [style.align-self]="alignSelf" [style.height]="'75px'"
+            class="flex-item1 border1">Item2</div>
+          <div [ngStyle]="{'padding-top': '10px'}" [style.align-self]="alignSelf" [style.height]="'120px'"
+            class="flex-item1 border1">Item3</div>
+          <div [ngStyle]="{'padding-top': '30px'}" class="flex-item border1">Don;t have any align </div>
+          <div [ngStyle]="{'padding-top': '5px'}" [style.align-self]="alignSelf" class="flex-item1 border1">Item4</div>
+        </div>
+      </div>
+      <div class="question">
+        <ul>
+          <li> flex:2 :number of places it will take its take all the space</li>
+          <li> flex-basis:100px for width</li>
+          <li> flex-shrink:3 decrease size flex-grow:3 increase size</li>
+        </ul>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+          <mat-button-toggle (click)="style={'flex':'2'}">Flex 2</mat-button-toggle>
+          <mat-button-toggle (click)="style={'flex-basis':'100px'}">Flex basis</mat-button-toggle>
+          <mat-button-toggle (click)="style={'flex-shrink':'3'}">Flex-shrink</mat-button-toggle>
+          <mat-button-toggle (click)="style={'flex-grow':'3'}">Flex-grow</mat-button-toggle>
+        </mat-button-toggle-group>
+        <div class="flex">
+          <div [ngStyle]="{'flex':style.flex}" class="flex-item border1">Flex 2</div>
+          <div [ngStyle]="{'flex-basis':style['flex-basis']}" class="flex-item border1">Flex basic</div>
+          <div [ngStyle]="{'flex-shrink':style['flex-shrink']}" class="flex-item border1">Flex-shrink</div>
+          <div [ngStyle]="{'flex-grow':style['flex-grow']}" class="flex-item border1">Flex-grow</div>
+          <div *ngIf="style['flex-shrink']" class="flex-item border1">Extra to check flex shrink</div>
+          <div *ngIf="style['flex-shrink']" class="flex-item border1">flex shrink It will shrink first</div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+
+</mat-tab-group>

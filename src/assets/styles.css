@@ -1,3 +1,80 @@
-app-sort,app-list,app-hashing,app-bst{
-    width:100%
+app-data-structure,
+app-angular,
+app-sort,
+app-list,
+app-hashing,
+app-bst {
+    width: 100%
 }
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.expand-icon {
+    font-size: 28px;
+    padding-right: 15px;
+}
+
+.text_background {
+    /* background-color: #f6f6f6; */
+    padding: 10px 0px 0px 10px;
+    margin-top: 5px;
+}
+
+.question_description {
+    padding-left: 10px;
+}
+
+.question_response {
+    margin-bottom: 8px;
+}
+
+.question_description p{
+    margin-bottom: 0px;
+    line-height: 32px;
+}
+.question_value p{
+    margin-bottom: 0px;
+    line-height: 25px;
+    font-size: 15px;
+}
+.code_snippet img{
+    width: 600px;
+}
+.mt5{
+    margin-top: 5px;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  } 
+
+  .space{
+      height: 70px;
+  }

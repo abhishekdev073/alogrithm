@@ -1,0 +1,638 @@
+1.How does an Angular application work?
+  Angular use angular.json file to build the code. required script get added at our index.html page.
+  it find the entry point for our application(Main.ts) and Pollyfills, Style
+  main.ts create the browser enviroment to run our application // platformBrowserDynamic().bootstrapModule(AppModule)// 
+    appmoudule contain all the component and boostrap the main component
+  {
+  declarations: [AppComponent, AngularBasicComponent,MyPipePipe] --  Contain component and pipes 
+  Providers:[services] --add services get injected
+  Import:[FormsModule,browerModule] --Import FormsModule to use ngModel in appmodule
+  boostrap:AppComponent,
+  entryComponents: [CourseDialogComponent], compoent get loaded dynamically. like model, dyamic component
+  }
+2. AOT 
+   Angular provides two types of compilation:
+   1.JIT(Just-in-Time) compilation - compiles inside the browser during runtime.
+   2. AOT(Ahead-of-Time) compilation. compiles during the build time
+3.  Angular Universal :  render applications on the server-side :better SEO. fast loading   
+4. directives :-  add additional behavior to elements. 
+    attribute directives :- change the appearance or behavior of an element, component, or another directive.
+	                         <div [ngClass]="isSpecial ? 'special' : ''"> <div [ngStyle]="currentStyles">
+    structural directives. -- change the DOM layout by adding and removing DOM elements.. 
+	                          *ngIf ,*ngFor
+    Components directives --directives with a template
+	
+	  Custom directive :
+				  it is like component dont have template
+				  we can change style by using ElementRef
+				  add event using HostListener
+				  we can also create custom structural directive
+				  
+5. async pipe :-<div>{{ time | async }}</div>	
+                  when value get resolved by promise or oberable value get printed.		
+
+6. What happens if you use script tag inside template?
+           angular  cosider unsafe code and automatically sanitizes it. remove it form view		
+7. What are template statements : 
+     A template statement responds to an event raised by a binding target such as an element, component, or directive
+     <button (click)="editProfile()">Edit Profile</button>	 
+9  What are observables?
+  observables are used for event handling, asynchronous programming, and handling multiple values   
+
+10.What is RxJS
+   RxJS is a library for composing asynchronous and callback-based code using Observables
+   uses operators for processing observables.
+
+11 .What is an observable
+    An Observable is a unique Object similar to a Promise that can help manage async code. 
+	 The observables are created using new keyword.its can emit multiple value
+12. What is an observer?
+    Consumer what will get
+    Observer is an interface for a consumer of push-based notifications delivered by an Observable	
+			const observer = {
+		  next: x => console.log('Observer got a next value: ' + x),
+		  error: err => console.error('Observer got an error: ' + err),
+		  complete: () => console.log('Observer got a complete notification'),
+		};
+			
+13 What is the difference between promise and observable
+    Observable	
+	Declarative: it will not run untill you subscribe it
+	Provide multiple values over time
+	Provides chaining and subscription to handle complex applications
+	Promise
+	Execute immediately on creation
+	Provide only one
+	
+14 subject :
+    While plain Observables are unicast (each subscribed Observer owns an independent execution of the Observable), Subjects are multicast.	
+	
+15 What are observable creation functions :-
+    from a promise :-const observable = from(fetch('/api/endpoint')); 
+    from counter:-  const observable = ajax('/api/data');
+	from an event:-  const el = document.getElementById('custom-element');
+                     const observable = fromEvent(el, 'mousemove'); 
+    form ajax   :-   const observable = ajax('/api/data')	
+
+16 What are angular elements
+   providing a way to use Angular components in non-Angular environments.used as basic html tag	
+   
+17 What are custom elements :-
+    Custom elements (or Web Components) 
+     which extends HTML	. allowing you to define a tag whose content is created and controlled by JavaScript code
+                  
+18 What is router outlet 
+    : <router-outlet></router-outlet>
+     <!-- Routed components go here -->	
+	  <a routerLink="/todosList" >List of todos</a>
+	  <a routerLink="/todosList1" routerLinkActive="active">List of todos</a>
+19 What is router state
+    RouterState is a tree of activated routes	  
+20 What is activated route	
+     information about a route associated with a component loaded in an outlet
+	   constructor(route: ActivatedRoute)
+	   route.params.pipe(map(p => p.id))
+	   route.url.pipe(map(segments => segments.join('')))
+	   route.data.pipe(map(d => d.user))
+	   
+21   What is the purpose of Wildcard route
+     { path: '**', component: PageNotFoundComponent }
+22 What is metadata rewriting :- 
+    converts the expression initializing the fields such as useClass, useValue, useFactory
+	
+23 How do you enable binding expression validation
+   tsconfig.json ->angularCompilerOptions->fullTemplateTypeCheck  = true/false	
+24 What is the purpose of any type cast function 
+    template:  '{{ $any(user).contacts.email }}'	
+	template:   '{{ $any(this).contacts.email }}'
+	To disable type error
+25 Non null type assertion operator 
+    {{contact!.email}} handle null
+26 What is zone 
+    A Zone is an execution context that persists across async tasks	
+	Angular relies on zone.js to run Angular's change detection processes when native JavaScript operations raise events
+27 How to inject the dynamic script in angular
+   Using DomSanitizer we can inject the dynamic Html,Style,Script,Url.
+      htmlSnippet: string = this.sanitizer.bypassSecurityTrustScript("<script>safeCode()</script>");
+     <div [innerHtml]="htmlSnippet"></div>
+28 Angular Ivy 
+    new rendering engine for Angular	 
+	 enable ng new ivy-demo-app --enable-ivy
+	 add in existing project tsconfig.app.json->angularCompilerOptions-> "enableIvy": true
+	 
+    Generated code that is easier to read and debug at runtime
+	Faster re-build time
+	Improved payload size
+	Improved template type checking
+	used with AOT
+29 Angular Language Service 
+   The Angular Language Service is a way to get completions, errors, hints, and navigation inside your Angular templates.
+   npm install --save-dev @angular/language-service
+   and install vs code extentsion angular language serivce.
+
+30 web workers :-  its run in background does not freeze the screen   
+31 Angular CLI builders 
+                          we can add command or modify existing command like  ng build,ng test and ng lint                           
+                           we create 1 node project with schema (input format),builder.json file which has 	"copy-package" in it	
+                           we right logic in our file index.js give its reference in builder.json file
+						   run command tsc it will convert .ts file to .js file						   
+						   we import node project inside our angular project package.json file. devDependencies "@example/copy-file": "file:../command-builder",
+						   we can create command like ng run builder-test:copy-package by adding it in angular.json file
+32 codelyzer :-provides set of tslint rules
+33 What are the case types in Angular
+              1. camelCase  :-Symbols, properties, methods, pipe names, non-component directive selectors,
+			  2. UpperCamelCase (or PascalCase): Class names, including classes that define components, interfaces, NgModules, directives, and pipes
+	          3. dash-case (or "kebab-case"): file names
+              4. UPPER_UNDERSCORE_CASE :-All constants
+34 field decorators :- @Input() myProperty; @Output() myEvent = new EventEmitter(); 
+35 What is platform in Angular 
+                    context in which an Angular application runs
+					 in run in browser (platform-browser). it can also run on server (platform-server)
+36 How do you select an element with in a component template :-  @ViewChild
+     
+	  <input #uname>
+	  @ViewChild('uname') input;
+	  console.log(this.input.nativeElement.value);
+37 How do you detect route change in Angular  :-this.router.events.subscribe((event: Event) => {})
+38 What is the purpose of differential loading in CLI
+   : create 2 build ES2015 for modern browser. ES5 syntax for olde browser
+   
+39 How do you upgrade angular version :-ng update //ng update @angular/cli @angular/core 
+40 What are the ways to trigger change detection in Angular
+    You can inject either ApplicationRef or NgZone, or ChangeDetectorRef into your component 
+    ApplicationRef.tick():change detection run on entire tree
+    NgZone.run(callback) :-
+    ChangeDetectorRef.detectChanges() :- run in its component and its children	
+	
+40 : change detection : change detection run and angular update the view 
+       it run because of 
+      1.When component load call ApplicationRef.tick() 
+      2.Event listener
+      3. HTTP request
+      4. MacroTasks, such as setTimeout() or setInterval()  
+      5. MicroTasks, such as Promise.then() 	
+      6. Other async operations :- WebSocket.onmessage() and Canvas.toBlob()	  
+41 : Zone :
+         for asynchronous operations Angular uses a zone to detect changes in places where the data could have possibly
+         Zone.js :- It work similar to javascript event loop
+        JavaScript event loop :- 
+		           Its contain Heap,Stack and Queue 
+				   Heap :- Its has all the data in it like object
+				   statck :- When our code execute function get stored in stack.Function calls form a stack of frames.
+				   Queue :- Queue store the message, mesagge is link to function and it call the function
+				             Runtime handle the mesagge from old one. message get removed from queue and its function get called
+							 calling a function creates a new stack frame for that function's use.
+							 The processing of functions continues until the stack is once again empty. 
+							 Then, the event loop will process the next message in the queue (if there is one)
+							 while (queue.waitForMessage()) {
+									queue.processNextMessage()
+							   }
+			     message :- setTimeout, setInterval, event  
+							 messages are added anytime an event occurs and there is an event listener attached to it
+							 If there is no listener, the event is lost
+							 If 1 message is being held then other have to w8.  
+							 setTimeout called with 2 parameter. seconde parameter tell add this to queue after this time
+							 
+	 Zone :-  A zone is an execution context that persists across async tasks.	
+	          Angular handle the asynch operation like setInterval,setTimeout,promise,event in zone after that it trigger the change detection		   
+			  While Zone.js can monitor all the states of synchronous and asynchronous operations Angular additionally provides a service called NgZone
+   
+             ngZone.runOutsideAngular(func) => does to trigger change detection 
+             ngZone.run(func) => detect changes run. There are some 3rd party API zone does not handle e.g 		 
+			                     New async API(Event drive API) is not handled by Zone, so you need to use ngZone.run() run change detection
+								 
+			
+              IF you don't want to run change detection on few events like ['scroll', 'mousemove'];			
+			   create file zone-flags.ts => add =>(window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove'];	
+               Import file in  Pollyfills.ts  import `./zone-flags`; before import 'zone.js'; 
+			   
+              If you don't want to run change detection on your app automatically then disable it by
+                             Remove the zone.js import from polyfills.ts:			  
+			                 main.ts => bootstrapModule(AppModule, { ngZone: 'noop' })           		 
+        
+						 
+		 A zone provides an execution context that persists across async tasks				 
+42 difference between interpolated content and innerHTML
+       <div >{{htmlSnippet}}</div> && <div [innerHTML]="htmlSnippet"></div>
+       innerHTML get interpreted and script get removed. in interpolation it does not get interpreted print as text content	
+    want to attach html then only innerHTML will work not {{}}	   
+	  
+Test :- In angular.json file test builder get defined.
+        it has mentioned entry point for test =>main = src/test.ts
+        testbuilder has karma.conf.js file name and reuied style file					
+	    karma.conf.js => library  like karma , jasmine,instanbull
+		                 port,restartOnFileChange,singleRun,autoWatch
+                          singleRun :true // it run the test close the browser
+         test.ts => create the enviroment fot test
+		            Define which file to run 
+					const context = require.context('./', true, /\.spec\.ts$/);
+					or specific file => /\app.component.spec\.ts
+		 			
+        code-coverage => ng test --no-watch --code-coverage
+		                run command it create codecoverage/index.html file  gives coverage
+			
+                   we need to configure all the module which our component uses
+                     beforeEach => it get run before every test case.  
+                      you can intiliaze serivce/componentt in every test or just in beforeEach					 
+							 							
+		TestBed => In angular App DI inject serivces to our component automatically.
+		            testbed dynamically create Angular test module.
+					Inject service in module by
+					TestBed.inject(serviceName) or TestBed.get(serviceName)
+				
+		    HTMLElement =>	work with browser	
+            const htmlElement: HTMLElement = fixture.nativeElement;
+            work with browser
+            DebugElement => can work without browser env
+			const debugElement: DebugElement = fixture.debugElement;
+			const htmlElement1: HTMLElement = debugElement.nativeElement
+			
+	By.css  => used to select html element in not browser env with DebugElement
+	                const bannerDe: DebugElement = fixture.debugElement;
+					const paragraphDe = bannerDe.query(By.css('p'));
+					const p: HTMLElement = paragraphDe.nativeElement;
+	fixture.detectChanges => update the value on html
+	dispatchEvent => Change an input value with dispatchEvent()
+	                 when we set value to input even after detectchagnes our comp don't get those value       
+                     nameInput.value = 'name change';
+					 nameInput.dispatchEvent(new Event('input'));
+					 fixture.detectChanges();
+		             now angular will update the binding			 
+    tick(1000) => it will wait untill all pending asynchronous activities finish 
+	             wait for given time used inside fakeAsyc
+
+	work with aync code we use tick, fakeAsyc and async with fixture.whenStable(),
+	Spy :- Spy method of service
+	        spyOn(service, 'getPromiseData').and.returnValue(Promise.resolve('55551'));
+	
+               
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+1. on change detection angular call all the method from view
+   change detection happen on angular event
+2. getter :-  get fullName(){} :-html {{ fullName }} 
+3. If you use functional inside experssions it will get called on every change detection {{get fullName}} 
+  changeDetection: ChangeDetectionStrategy.OnPush :- help us ignore change detection cycles from outside,
+  change detection work only in this component if event occure in it
+                                                     or if its input changes;
+	in our component we have used function inside experssions like {{ getFullName() }}, it will get called each time event occured
+     inside comp or out side comp. to prevent change detection in comp use  ChangeDetectionStrategy.OnPush. parent event does not
+  trigger its chage detection	 
+4 even to prevent to experssions call inside its component use pure pipe.
+5 during change detection pure pipe get called only when its input changes.
+6. Track by :- ngFor if we change the array it will rerender the view again. track by only changed element get rerender.
+7 Injectable : Service : it get inserted at root or at module level
+    @Injectable({
+  providedIn: root,
+})
+
+        @Injectable({
+  providedIn: UserModule,
+})
+
+   we can also declare provider for service from module
+        @NgModule({
+      providers: [UserService],
+      })
+	  
+	  providedIn in better that providers array. if service is not used in any comp then it wont be added in our bundle
+	  
+// we can change the service completely by useExisting  
+	   providers: [
+    Service1Service,
+    httpInterceptorProviders,
+    { provide: HeroService, useExisting: Service1Service }],
+8 Tree-shaking and @Injectable() :-	 Using the @Injectable() providedIn property is preferable to the @NgModule()
+                            providers array because with @Injectable()
+                         providedIn, optimization tools can perform tree-shaking,
+						 which removes services that your application isn't using and results in smaller bundle sizes.
+	
+	Tree-shaking :- While optimization in bundle dont add injectable services that is not used	
+
+  service injected:register providers in the metadata of the service (in the @Injectable() decorator),
+   or in the @NgModule() or @Component() metadata
+
+9   @Self @SkipSelf @Host @Optional     constructor( @Optional() @Host private heroService: HeroService){} 
+
+      @Host don't look ahead for dependency
+	  
+10 :-Content projection :- <ng-content></ng-content> :- <home>it will get inserted in home template where we right <ng-content></ng-content> </home>	  
+11 :- viewProviders and providers :- view provider its service get access in view but not in <ng-content>
+12 View encapsulation :- CSS styles are encapsulated into the component's view and don't affect the rest of the application.
+   encapsulation: ViewEncapsulation.ShadowDom :- encapulate css. its style remain sepreate from rest of the dom. its children will get its style
+                                             it can get global style style
+   ViewEncapsulation.none :- style goes to global level
+                             If same style in parent and child last style get applied as last loaded to the UI
+   ViewEncapsulation.Emulated :- by default :-its children will not get its styling. it add host to id and its content 
+   
+13 :- shadow DOM :- Style and behaviour hidden from other component .like vidoe tag	  
+    
+@Component({
+  selector: 'app-tet',
+  templateUrl: './tet.component.html',
+  styleUrls: ['./tet.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.ShadowDom,
+  providers: [{provide: HeroService, useValue: {name: 'abhishek tet1'}}],
+  animations: []
+ })
+	  
+14 Form :-	
+   1. Reactive forms :more scalable, reusable, and testable .model get handle explcitly
+       profileForm = new FormGroup({
+       firstName: new FormControl(''),      
+       address: new FormGroup({
+        street: new FormControl('')       
+      })
+     });
+	 <form [formGroup]="profileForm">
+	 <input formControlName="firstName">
+	   <div formGroupName="address">
+	   <input formControlName="street">
+	   </div>
+	 </from>
+	 
+     profileForm.value to get
+	 this.profileForm.setValue({}) takes complete object   this.profileForm.patchValue({}) can update single property
+	 
+  FormBuilder :- Its service provide reactive form module 
+	 profileForm = this.fb.group({
+     firstName: [''],    
+     address: this.fb.group({
+      street: ['']     
+     }),
+     });
+	 
+  dynamic forms: FormArray :- its uses FormArray its an alternative to FormGroup. used to create dynamic form 
+  
+    formGroup => FormControl => Make group of form control based on object dynamic form will get created
+	chnage that object form will change
+	 :- FormGroup to collect a set of controls
+	
+	 
+	 
+	 
+   2. Template-driven forms :- rely on directives in the template to create and manipulate the underlying object model. 2 way binding.
+    
+15 : Custom form validation  :- In reactive form we just pass function to formcontrol along with other validator
+      	in Template-driven forms we create the directvie and add to the input field
+		 <input [(ngModel)]="abhi" required pattern="[^ @]*@[^ @]*" validateEmail
+          #email="ngModel">
+	    <div *ngIf="email.errors && (email.dirty || email.touched)">
+        <p *ngIf="email.errors.required">Email is required</p>
+        <p *ngIf="email.errors.pattern">Email must contain at least the @ character</p>
+        <p *ngIf="email.errors.emailDomain">Email allowed {{ email.errors.emailDomain.parsedDomain }} domain</p>
+        </div>
+	  
+ 16 Providers :- configuring providers, you can make services available to the parts of your application that need them 
+    * default behavior is for the injector to instantiate that class with new 
+	 
+	 { provide: HeroService,useClass:Service1Service } :- give instance of Service1Service. if Service1Service its not already provided it will work
+	 { provide: HeroService,useExisting:Service1Service } :- uses existing service.Service1Service already should be provide ,instance should be there 
+     { provide: HeroService,useValue:{name:'abhishke yadav' } :- pass value to it
+	 
+	 //// non-class dependencies ////
+	  // want to add object without any type 1. string token , injection token
+	 string token :-   { provide: 'CONFIG', useValue: {name:'abhishek' } //
+	 constructor(@Inject('CONFIG') public Config: any) {} // as its uses string instead of type it is prone to error. can be overwridden by other developer or other lib
+
+	 InjectionToken :- used for non class dependency
+	   export const APP_CONFIG = new InjectionToken<any>('');
+	   { provide: APP_CONFIG, useValue: {name:'abhishek' }
+	    constructor(@Inject(APP_CONFIG) public Config: any) {}
+		
+	factory providers :-To create a changeable, dependent value based on information unavailable before run time, you can use a factory provider
+    export let heroServiceProvider =
+     {    provide: HeroService,
+          useFactory: heroServiceFactory,
+          deps: [Logger, UserService]//pass these 2 heroServiceFactory based on its value instances get set
+     };	
+	  const heroServiceFactory = (logger: Logger, userService: UserService) => {
+      return new HeroService(logger, userService.user.isAuthorized);
+     };
+	 
+	 
+17 :-injector  :-An object in the Angular dependency-injection system
+                 can find a named dependency in its cache or create a dependency using a configured provider
+		1. An injector provides a singleton instance of a dependency, and can inject this same instance in multiple components.
+		2. hierarchy of injectors at the NgModule and component level
+		3. You can configure injectors with different providers that can provide different implementations of the same dependency
+			
+18 :- Template variables :- <input #phone placeholder="phone number" />
+                            <button (click)="callPhone(phone.value)">Call</button>	
+	
+
+	
+20  directives :-<div [ngClass]="{'active': isActive, 'disabled': isDisabled}">	
+                   <div [ngStyle]="{'property': 'value'}"> <div [ngStyle]="dynamicStyles()">
+				   
+21 :- Class decorators :- @Component({...}),@Directive({...}),@Pipe({...}),@Injectable(),@NgModule()
+22 :- @Input() myProperty;  <my-cmp [myProperty]="someExpression">). 
+      @Output() myEvent = new EventEmitter();  <my-cmp (myEvent)="doSomething()">).
+	  @HostBinding('class.valid') isValid;  bind element property
+	  @HostListener('click', ['$event']) onClick(e)  bind event
+	  
+23 :-ahead-of-time (AOT) compilation :- code get compiled buring build time for browser	  
+24 :- change detection :- Synch UI with state of data. when it runs save current state as previous state for next time running
+                          Event(clikc) changes state it trigger change detection 
+
+25 :- Data binding  //  Template syntax  
+                Interpolation   - {{name}}
+				Property binding  -<input [value]="firstName"> 
+				Event binding     -  <button (click)="readRainbow($event)">
+				Attribute binding  - <div [attr.role]="myAriaRole"> 
+				Class binding    -   <div [class.extra-sparkle]="isDelightful"> 
+				Style binding    -  <div [style.width.px]="mySize">	
+				Two-way data binding with ngModel	 	<my-cmp [(title)]="name"> 					  
+					   
+				<p>Card No.: {{cardNumber | myCardNumberFormatter}}</p> : pipe
+				<p>Employer: {{employer?.companyName}}</p> check null
+
+26 differential loading :-create 2 buldle for application 1. small for modern browser . 2. large for old browser	
+27 eager loading :-module or component get loaded at launch opposite of lazy loading
+28 Angular CLI builders :- we can add command or modify existing command like  ng build,ng test and ng lint                           
+                           we create 1 node project with schema (input format),builder.json file which has 	"copy-package" in it	
+                           we right logic in our file index.js give its reference in builder.json file
+						   run command tsc it will convert .ts file to .js file						   
+						   we import node project inside our angular project package.json file. devDependencies "@example/copy-file": "file:../command-builder",
+						   we can create command like ng run builder-test:copy-package by adding it in angular.json file
+
+
+ 28 pass data on navigation
+    const navigationExtraData = this.router.getCurrentNavigation();
+  
+   this.router.navigate(['home'], data); pass data read in home component //navigationExtraData.extras.data
+   
+29 Zone.js :- It work similar to javascript event loop
+        JavaScript event loop :- 
+		           Its contain Heap,Stack and Queue 
+				   Heap :- Its has all the data in it like object
+				   statck :- When our code execute function get stored in stack.Function calls form a stack of frames.
+				   Queue :- Queue store the message, mesagge is link to function and it call the function
+				             Runtime handle the mesagge from old one. message get removed from queue and its function get called
+							 calling a function creates a new stack frame for that function's use.
+							 The processing of functions continues until the stack is once again empty. 
+							 Then, the event loop will process the next message in the queue (if there is one)
+							 while (queue.waitForMessage()) {
+									queue.processNextMessage()
+							   }
+			     message :- setTimeout, setInterval, event  
+							 messages are added anytime an event occurs and there is an event listener attached to it
+							 If there is no listener, the event is lost
+							 If 1 message is being held then other have to w8.  
+							 setTimeout called with 2 parameter. seconde parameter tell add this to queue after this time
+							 
+	 Zone :-  A zone is an execution context that persists across async tasks.	
+	          Angular handle the asynch operation like setInterval,setTimeout,promise,event in zone after that it trigger the change detection		   
+			  While Zone.js can monitor all the states of synchronous and asynchronous operations Angular additionally provides a service called NgZone
+   
+             ngZone.runOutsideAngular(func) => does to trigger change detection 
+             ngZone.run(func) => detect changes run. There are some 3rd party API zone does not handle e.g 		 
+			                     New async API(Event drive API) is not handled by Zone, so you need to use ngZone.run() run change detection
+								 
+			
+              IF you don't want to run change detection on few events like ['scroll', 'mousemove'];			
+			   create file zone-flags.ts => add =>(window as any).__zone_symbol__UNPATCHED_EVENTS = ['scroll', 'mousemove'];	
+               Import file in  Pollyfills.ts  import `./zone-flags`; before import 'zone.js'; 
+			   
+              If you don't want to run change detection on your app automatically then disable it by
+                             Remove the zone.js import from polyfills.ts:			  
+			  main.ts => bootstrapModule(AppModule, { ngZone: 'noop' })
+							
+							
+30 Angular Material :- Material Design components for Angular, its new easy to use compare to boostrap. its new has less feature
+                       run ng add @angular/material it will add @angular/material && @angular/cdk
+					   it will add css theme path in angular.json => styles []
+					   ./node_modules/@angular/material/prebuilt-themes/indigo-pink.css 
+					   or you can import in .css file  => @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+					   Add module BrowserAnimationsModule in app.moudle.ts imports. and component you want to use like MatSliderModule,MatTabsModule
+					   
+							
+			 
+31 :- Angular Animation :- use for animation. State of element changes from one state to other like "Open"=>"closed"
+                         or "closed"=>"Open" 
+						 when change the value of isOpen based on 'open','closed','abhi', it will  pick mentioned style with transition delay
+                           <div [@openClose]="isOpen" class="open-close-container">
+							  <p>The box is now {{ isOpen ? 'Open' : 'Closed' }}!</p>
+							</div>
+						 
+						 animations: [
+							trigger('openClose', [
+							  state('open', style({
+								height: '200px',
+								opacity: 1,
+								backgroundColor: 'yellow'
+							  })),
+							  state('closed', style({
+								height: '100px',
+								opacity: 0.8,
+								backgroundColor: '#c6ecff'
+							  })),
+							  state('abhi', style({
+								height: '300px',
+								opacity: 0.3,
+								backgroundColor: 'red'
+							  })),
+							  transition('open => closed', [
+								animate('1s')
+							  ]),
+							  transition('closed => open', [
+								animate('0.5s')
+							  ]),
+							  transition('abhi => open', [
+								animate('3s')
+							  ]),
+							]),
+						  ],						 
+			 
+              we can use wild card aslo  transition('* => closed') change from any to closed
+
+28 ng-template and ng-container	 :- Use as a grouping element 
+                
+              <ng-template> :- It is never displayed html directly. Use for structural directives such as: ngIf, ngFor, ngSwitch,..
+              <ng-container> : simple syntax. can be used direclty with html no need of extra directive like *ngIf	
+29 if else :-   <div *ngIf="condition else elseBlock">div1</div> 
+                 <div #elseBlock> div2</div>		  
+	//////////////// RxJS //////////////////////////////////////////////////
+	
+   its work on producer and consumer logic
+  RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.	
+28 Observable  :-	
+               const observable = new Observable(observer => {
+									  observer.next(1);
+									  observer.next(2);
+									  observer.next(3);
+									  observer.error("error");
+									  setTimeout(() => {
+										observer.next(4);
+										observer.complete();
+									  }, 1000);
+									});
+									
+					observable.subscribe({
+					  next(x) { console.log('got value ' + x); },
+					  error(err) { console.error('something wrong occurred: ' + err); },
+					  complete() { console.log('done'); }
+					});					
+					 observable.subscribe((x1)=>{
+						  console.log('hi',x1)
+						},err=>{
+						  console.log('err',err)
+						},function(){
+						  console.log('complete')
+						})				  
+   		
+   Observers :-Observers are just objects with three callbacks	
+29 RxJS Operators :- Operators are functions. 2 type
+                     1. Pipeable Operators  :- can be piped - takes oberable gives new observable 
+					 2. Creation Operators :- standalone function
+					 const observable = from([1, 2, 3]); array
+					 of :- Converts the arguments to an observable sequence
+							of(1, 2, 3)
+						  .pipe(map((x) => x * x),filter((v) => !(v % 2)))
+						  .subscribe((v) => console.log(`value: ${v}`));	
+
+    const observable = interval(1000);
+    var itsiwllRun4Time = observable.pipe(take(4))	
+30 :- Subject :- special type of Observable that allows values to be multicasted to many Observers. 
+            its do the work of both oberable and observer
+           Every Subject is an Observable.
+		   Every Subject is an Observer.
+  	
+             const subject = new Subject<number>();
+			 subject.subscribe({next:x=>{console.log(x)}})
+				subject.next(1);
+				subject.next(2);
+				
+		//  While plain Observables are unicast (each subscribed Observer owns an independent execution of the Observable), Subjects are multicast.		
+		Observable and subject :-Subject is multicasted ,Observable is unicast Observable	
+		        subject.next(1);  :- every subscriber get same value
+				observer.next(Math.random()) :- every subscriber get different value
+			/////////////////	
+            const source = from([1, 2, 3]);
+			const subject = new Subject();
+			source.subscribe({
+			  next: (v) => console.log(`observerA: ${v}`)
+			});
+			 source.subscribe(subject)
+			 
+		BehaviorSubject :-	Its maintain the last emitted value when you subscribe it get emitted first
+                        		const subject = new BehaviorSubject(0); // first value will be 0
+		                     its always maintain the current value like last next value.
+							
+	    ReplaySubject :-  const subject = new ReplaySubject(2); when new subscriber it last 2 value emitted
+		AsyncSubject :- const subject = new AsyncSubject(); // when subject.complete() then only last value get emitted
+		asyncScheduler :- code run in aync
+ 		                 var observable = new Observable((proxyObserver) => {proxyObserver.next(1);proxyObserver.next(2)proxyObserver.complete();
+                          }).pipe(observeOn(asyncScheduler));
+		

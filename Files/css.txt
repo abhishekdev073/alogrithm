@@ -1,0 +1,153 @@
+1. padding :- content space from div
+2. border :- border 5px solid red
+3. margin :- left space from div; margin 0 auto tp center give width
+4. width :- its also take padding and margin
+5. box-sizing: border-box; margin padding take from width
+6. text-align: justify; justify,left right center gives space 
+7. display :block :- start with new line takes width 100% inline with same line
+
+
+// flex box
+1.display :flex adjust automatically
+2.justify-content :flex-start, flex-end,center,space-between,space-around : horizontal
+3.align-items: flex-start,flex-end,center,baseline,stretch : vertical
+4.flex-wrap: wrap; less space content goes to next line
+5.align-content :-stretch,flex-start,flex-end,center,space-between,space-around :-align is base line
+
+6.order : change the position
+7. margin-left :auto it will push all item to left 
+8. margin: auto; to takes item in center
+9. align-self :-  flex-start,flex-end,center,baseline,stretch : vertical for self
+10. flex:2 :number of places it will take its take all the space
+11. flex-basic:200px for width
+12. flex-shrink:3 decrease size flex-grow:3 increase size
+
+Grid
+1. display :grid, inline-grid takes only required space //makes Grid 
+2. grid-template-columns: auto auto auto; 80px 200px auto; makes 3 column based on value
+2. grid-template-rows: 80px 200px; works on row
+3. grid-column-gap: 50px; 
+4. grid-raw-gap: 50px;
+5. grid-gap: 50px 100px; row column
+6. justify-content: space-evenly,space-around,space-between,center,start,end :- horizontal alignment
+7. align-content: space-evenly,space-around,space-between,center,start,end;
+
+
+8. grid-row-start: 1 grid-row-end :3 grid-column-start: 1 grid-column-end :3 same
+8. grid-column: 1 / 5; start at 1 and end at 5
+8. grid-column: 1 / span 3; start at 1 take 3 column
+8. grid-row: 1 / 4;
+8. grid-row: 1 / span 2;
+8. grid-area: 1 / 2 / 5 / 6; row from 1-5 column 5-6
+8. grid-area: 2 / 1 / span 2 / span 3;. row start 2 left 2 span column start at 1 left 3 span
+
+// positions  positioned using the top, bottom, left, and right
+1. Static :-Default
+2. relative :- its moves from its original position
+3. fixed :-position remains fixed to the viewport
+4. absolute :-If parent is not pasitioned it get 
+    relative to the body.  its get relative to its parent. just like fixed get relative to view port
+5. sticky :- get sticky like menu
+
+
+// css
+1.
+////////
+  shift element to right
+    width: 20%;
+    margin-left:auto
+// clear float
+
+// If we have use float and  element size is bigger that its parent then 
+goes to below to avoid that use clear fix increase parent size fit in 
+  .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+} 
+// takes items in center
+
+.flex-container {   
+    display: flex;
+    width: 300px;
+    height: 240px;   
+}
+
+.flex-item {   
+    width: 100px;
+    height: 100px;
+    margin: auto;
+}
+
+1   padding:25px
+   text-align:center
+
+2.  width: 20%;
+    margin-left:auto;
+    text-align:center;   
+3.center {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
+}
+
+.center p {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}  
+4   .center {
+  line-height: 200px;
+  height: 200px;
+  border: 3px solid green;
+  text-align: center;
+}
+
+/* If the text has multiple lines, add the following: */
+.center p {
+  line-height: 1.5;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+5.  .center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  border: 3px solid green;
+}
+
+///////////SASS////////////////
+1. Variable
+   $primary_1: #a2b9bc;
+   color:$primary_1
+2 Nesting 
+    .scss-nesting{
+    background-color: $primary_3;
+    p{
+     color:$primary_1;
+    }
+    div{
+        color:$primary_2;
+     }
+}   
+
+3.@import => @import "fileName"
+4.@mixing =>  CSS code that is to be reused throughout the website.
+          @mixin important-text {
+             color: red;
+            }
+          .scss-mixin{
+             @include important-text
+           }
+5.@extend => Inheritance  
+           .button-basic  {
+              padding: 15px 30px;
+               }
+          .button-report  {
+            @extend .button-basic;
+            background-color: red;
+          }

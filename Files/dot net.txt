@@ -1,0 +1,800 @@
+1. c# =>object-orientated  includes
+        encapsulation, inheritance, and polymorphism
+       Polymorphism :- one sample many form Compile time polymorphism/Overloading 
+	                  ,Runtime polymorphism/Overriding	
+        inheritance :aking property of one class to another 1 single level,multilevel,
+		            does not support multiple inhertance but can be achived by interface	
+	     encapsulation :-classes, properties and access modifiers are tools to provide encapsulation in c#,
+		     Encapsulation, in the context of C#, refers to an object's 
+			           ability to hide data and behavior that are not necessary to its user 
+2  type =>The fundamental building block in C#  unit of data and functions called a type
+        class,struct,enum,intrface,delegate		
+3. type member -fields,properties,constructors,methods	
+4. delegate - pointer to the function
+          Functions can be treated as values 
+          Using delegates, C# allows functions to be passed as values to and from other
+              functions.		  
+5Type Safety :- We difine the type at compile time int/string
+6. Memory Management :- 
+        C# relies on the runtime to perform automatic memory management
+		The Common Language Runtime has a garbage collector reclaiming 
+		 memory for objects that are no longer referenced.
+		
+7. Common Language Runtime (CLR) :-
+     provides runtime services such as automatic memory management and exception handling	
+8.C# is called a managed language =>because it compiles source code into managed
+                          code, which is represented in Intermediate Language (IL).
+          The CLR converts the IL into the native code of the machine, such as X86 or X64(Just-In-Time (JIT) compilation)						  
+9 assembly :- gernerated file on compilation dll or .exe
+            The container for managed code is called an assembly	
+10 Dot net framework :- three layers
+				Application framework :-Api for web(asp.net core,wpf,xamrin)
+				Base Class Libraries (BCL) :- lower level functionality (Collection,threading,I/O,networking,XML/Json)
+				CLR:- lower level functionality (Collection,threading,I/O,networking,XML/Json)		  
+
+		
+12 Instance versus static members 
+public class Panda
+{
+ public string Name; // Instance field
+ public static int Population; // Static field
+ public Panda (string n) // Constructor
+ {
+ Name = n; // Assign the instance field
+ Population = Population + 1; // Increment the static Population field
+ }
+}
+// instance method will be different for each instance. static will be same for all
+13 Array 
+            int[] numbers = new int[] { 19, 1, 234 };
+            int[] numbers1 = new int[6];
+            int[,] matrix = new int[3, 3];
+            int[,] matrix1 = new int[,] { { 1, 2, 3 }, { 2, 4, 6 }, { 64, 2, 45 } };
+            var matrix2 = new int[,] { { 1, 2, 3 }, { 2, 4, 6 }, { 64, 2, 45 } };
+            int[][] jaggedMatrix ={new int[] {0,1,2},new int[] {3,4,5},new int[] {6,7,8,9}};
+            var jaggedMatrix1 = new int[][] { new int[] { 0, 1, 2 }, new int[] { 3, 4, 5 }, new int[] { 6, 7, 8, 9 } };
+     
+
+14.Rectangular arrays  vs Jagged arrays 
+           Jagged array inner length of array can be different
+		
+		
+15 Variables and Parameters  -value, ref, out, or in
+       Passing arguments by value :=By default 	      Foo(x) => Foo(int p)
+	   To pass by reference :-	        Foo(ref x); =>Foo (ref int p)
+        out modifier :- similar to ref. condition
+	                      1. Don't assign doing to function
+						  2. Second function should assign the value
+					Foo(out x); =>Foo (out int p)
+	   in modifier	:-	similar to ref. condition
+                       argument’s value can not modified by the method	   
+					Foo(in x); =>Foo (in int p)
+					// helpfull in passing of large size data because it does not copy.
+					and it can not change as well
+	   The params modifier  :-  method accepts any number of arguments of a particular type
+                         Sum (1, 2, 3, 4); =>Sum (params int[] ints)
+                    
+	   Optional parameters =>Foo() =>    Foo (int x = 23)
+					 
+	   Named arguments :-  Foo (x:1, y:2) =>Foo (int x, int y)
+	   Ref Locals => int[] numbers = { 0, 1, 2, 3, 4 };
+                     ref int numRef = ref numbers [2] 
+					 change numRef  and numbers will get changed
+	   
+16 Stack and the Heap :- 
+           Stack :- memory for storing local variables and parameters
+		            grows and shrinks as a method or function is entered and exited
+		   Heap :-  memory in which objects (i.e., reference-type instances) store.
+                   a new object is created it is allocated on the heap, and a reference to that
+                    object is returned	
+				   The runtime has a garbage collector check of unsed reference and remove it from memory
+17 Null-Coalescing Operator :-string s2 = s1 ?? "nothing"; 	
+		Null-Coalescing Assignment Operator =>myVariable ??= someDefault; // if myVariable is empty then it get someDefault value
+		Null-Conditional Operator :- sb?.ToString();
+18 Namespace - group of types  or container 
+               A namespace is a domain for type names.
+               easier to find and avoiding conflicts
+                Namespaces are independent of assemblies, 	 
+	The using Directive :-imports a  // using System
+	using static :- static directive imports a type rather than a namespace. 
+	  //using static System.Console
+	   WriteLine ("Hello");
+   	Repeated namespaces => we can same type name untill there type is matches // e.g. both have same class
+				
+19 11 Class  =>internal, abstract, sealed, static, unsafe, and partial
+
+public class UnitConverter
+{
+ int ratio; // Field
+ static readonly int legs = 8,eyes = 2;
+ static readonly string TempFolder = System.IO.Path.GetTempPath();
+ //Can not modified after construction
+ //can be assinged during initialization or in constructor
+ 
+  const double twoPI = 2 * System.Math.PI;
+ //can not changed. get set during compile time
+ 
+ static readonly DateTime StartupTime = DateTime.Now;
+ // can changed everytime it run
+  public decimal CurrentPrice // The public property
+ {
+ get { return currentPrice; }
+ set { currentPrice = value; }
+ }
+ public decimal CurrentPrice { get; set; }// Automatic properties
+
+ public UnitConverter (int unitRatio) {ratio = unitRatio; } // Constructor
+ public int Convert (int unit) {return unit * ratio; } // Method
+ 
+ public void Deconstruct (out float width, out float height) //Deconstructor
+ {
+ width = Width;
+ height = Height;
+ }
+ 
+}
+
+20. static readonly vs const
+    Const value can not changed but static readonly can changed
+     static readonly DateTime StartupTime = DateTime.Now;
+       
+         const double twoPI = 2 * System.Math.PI;
+        public const decimal ProgramVersion = 2.3;	// not preferable
+		// supppose other assembly using this even after we changed it 2.4 it will be 2.3
+		  for other assembly untill it compile 
+21 Methods :- performs an action in a series of statements
+        Overloading methods 
+			void Foo (int x) {...}
+			void Foo (double x) {...}
+			void Foo (int x, float y) {...}
+			void Foo (float x, int y) {...}
+22 Overloading constructors :- A class or struct may overload constructors.
+         To avoid code duplication, one constructor can call another, using the this keyword:
+            using System;
+public class Wine
+{
+ public decimal Price;
+ public int Year;
+ public Wine (decimal price) { Price = price; }
+ public Wine (decimal price, int year) : this (price) { Year = year; }
+}
+           public Wine (decimal price) { Price = price; }
+           public Wine (decimal price, int year) : this (price) { Year = year; }
+		   
+23 .Deconstructors :- opposite to a constructor	
+       whereas a constructor typically takes a set of values (as parameters) and assigns them to fields, a deconstructor does the reverse and assigns fields
+back to a set of variables.	   
+			used with out
+			public void Deconstruct (out float width, out float height)
+ {
+ width = Width;
+ height = Height;
+ }
+ var rect = new Rectangle (3, 4);
+(float width, float height) = rect; 
+or
+float width, height;
+rect.Deconstruct (out width, out height);
+or 
+rect.Deconstruct (out var width, out var height);
+
+24 Properties :-Properties look like fields from the outside, but internally they contain logic, like
+         methods do
+   //Properties
+            decimal currentPrice2; // The private "backing" field
+            public decimal CurrentPrice2 // The public property
+            {
+                get { return currentPrice2; }
+                set { currentPrice2 = value; }
+            }
+
+            private decimal currentPrice, sharesOwned;
+            public decimal Worth1
+            {
+                get { return currentPrice * sharesOwned; }
+            }
+            //Expression-bodied properties
+            public decimal Worth
+            {
+                get => currentPrice * sharesOwned;
+                set => sharesOwned = value / currentPrice;
+            }
+
+            // Automatic properties
+            public decimal CurrentPrice1 { get; set; }
+
+            //Property initializers
+            public decimal CurrentPrice { get; set; } = 123; //
+            public int Maximum { get; } = 999;
+
+
+            //get and set accessibility 
+            private decimal x;
+            public decimal X
+            {
+                get { return x; }
+                private set { x = Math.Round(value, 2); }
+            }
+
+25. Static Constructors :- A static constructor executes once per type rather than once per instance
+          A type can define only one static constructor,
+ 		  it must be parameterless and have the same name as the type:
+		  
+		  A type can
+			define only one static constructor, and it must be parameterless and have the same
+			name as the type:
+		 Two things trigger this:
+             1.Instantiating the type
+             2.Accessing a static member in the type
+			
+26 Static Classes :-A class can be marked static
+                   must be composed solely of static members
+			       cannot be subclassed.	
+				   e.g  System.Console and System.Math 
+27.partial class,method :-compiler combines  two partial classes into one class ,
+      C# provides the ability to have a single class implementation in multiple .cs
+	   .should be in same assembly and namespace.
+	   Can sepreate the code
+	   multiple devloper can work on same file	   
+	   Partial Methods :- It has one declaration and  definition, can be in same file or in different file
+				   
+
+29 :-Upcasting &Upcasting  
+               Upcasting => creates a base class reference
+               			    Stock msft = new Stock(); //Stock sub class class
+                            Asset a = msft;  // asset base class. can not access value of stock 		 
+			 
+  			   Downcasting :-  creates a subclass reference
+               			      Stock msft = new Stock();
+							  Asset a = msft; // Upcast
+							  Stock s = (Stock)a; // now can acess value of base and subclass
+30 Virtual Function Members :- A function marked as virtual can be overridden by subclasses wanting to provide a
+specialized implementation
+         public virtual decimal Liability => 0; // Base Class
+          public override decimal Liability => Mortgage; // Sub Class  
+		  
+31. abstraction method :-modifier indicates that the thing being modified has a missing or incomplete implementation.we have to overirde it	
+          public abstract decimal NetValue { get; } // base class
+		   public override decimal NetValue => CurrentPrice * SharesOwned;// sub class
+32. Hiding Inherited Members :- same property in used in parent and child. we want hide propery of parent		   
+		        public class A { public int Counter = 1; } \\ Base class
+                public class B : A { public new int Counter = 2; } \\ sub class
+33  new versus override :- overide will even overide the parent class method but  not new				
+34 Sealing Functions and Classes :-overridden function member can seal its implementation with the sealed key‐
+                      word to prevent it from being overridden by further subclasses   
+		   public sealed override decimal Liability { get { return Mortgage; } }
+35 The base Keyword :-similar to the this
+                two essential purposes:
+			    1. Accessing an overridden function member from the subclass
+		        2. Calling a base-class constructor
+36 Constructors and Inheritance :-A subclass must declare its own constructors	
+             public Subclass (int x) : base (x) { }
+37. Boxing and Unboxing -box value type to refernce type ;
+        int Val = 1 Object Obj = Val; //Boxing  int i = (int)Obj unboxing			
+38.Structs :- A struct is similar to a class
+                A struct is a value type, whereas a class is a reference type.
+				 A struct does not support inheritance
+39. Interfaces :-Interfaces -signatures of methods, properties, 
+                  events or indexers.and can be used as dependcy injection,
+                 does not support multiple inhertance but can be achived by interface
+               similar to a class but only specifies behavior and does not hold state
+                             (data). Consequently
+				.Interface members are implicitly abstract.	
+        internal class Countdown : IEnumerator :- It shuld implment all the method of interface	
+
+40. Explicit Interface Implementation :-Implementing multiple interfaces can sometimes result in a collision between mem‐
+ber  resolved by I2.Foo();
+       public class Widget : I1, I2
+{
+ public void Foo()
+ {
+ Console.WriteLine ("Widget's implementation of I1.Foo");
+ }
+ int I2.Foo()
+ {
+ Console.WriteLine ("Widget's implementation of I2.Foo");
+ return 42;
+ }
+}
+w.Foo(); // Widget's implementation of I1.Foo
+((I1)w).Foo(); // Widget's implementation of I1.Foo
+((I2)w).Foo(); // Widget's implementation of I2.Foo	
+
+
+40.  Generics :-Generics allow you to delay the specification of the data type of programming elements in a class or a method,
+        until it is actually used in the program,work with any data type
+		
+41. Delegates :-callback function
+       A delegate is an object that knows how to call a method.
+       it defines the method’s return type and its parameter types.
+	   delegate int Transformer (int x);// it can be used with any mehtod with parameter int and return type int
+	   static int Square (int x) { return x * x}; 
+	   Transformer t = Square;
+	   int answer = t(3); //9
+	   
+42. Multicast Delegates :-call all return first one
+       can add list of target methods, can store multiple callback  
+      The + and += operators combine delegate instances
+            delegate  int Transformer(int x);	  
+	        Transformer del = function2;
+            del =del+ function1;
+            var x = del(9);
+			
+         static int function2(int a)
+        {
+           
+            return a + 10;
+        }
+			
+43. Generic Delegate Types :-
+            public delegate T Transformer<T>(T arg);	
+            Transformer<int> del = function2;
+            del = del+ function1;
+            var x = del(9);	
+
+44.The Func and Action Delegates :- to store we have to create generic everytitme
+                  Func is already generic is defined we can use that to reference and call method			
+
+           Func<int,int> del = function2// take tha parameter int and return int
+            del =del+ function1;
+			
+45. Event :- work with delegate broadcaster and subscriber			
+46. Lambda Expressions :- A lambda expression is an unnamed method written in place of a delegate instance	   
+        delegate int Transformer (int i);
+        Transformer sqr = x => x * x;  
+		sqr(3)
+		or Func<int,int> sqr = x => x * x;
+		 Func<int, int> multiplier = n => n * factor;
+        	   
+47. Anonymous Methods :- An anonymous method is like a lambda expression, but it lacks the fol‐
+lowing features:
+       Implicitly typed parameters
+	   Expression syntax (an anonymous method must always be a statement block)
+       The ability to compile to an expression tree, by assigning to Expression<T>
+	   delegate int Transformer (int i);
+	   Transformer sqr = delegate (int x) {return x * x;};
+48. LINQ :-LINQ, or Language-Integrated Query	   
+	    string[] names = { "Tom", "Dick", "Harry" };
+		IEnumerable<string> query = name.where(x=>x.length >0)
+		                                    .OrderBy (n => n.Length)
+                                             .Select (n => n.ToUpper())
+                     foreach (string name in query) Console.WriteLine (name) 	
+
+		 numbers.Take (3);
+         numbers.Skip (3);	
+         numbers.Reverse();		
+/////////////
+int[] numbers = { 10, 9, 8, 7, 6 };
+int firstNumber = numbers.First(); // 10
+int lastNumber = numbers.Last(); // 6
+int secondNumber = numbers.ElementAt(1); // 9
+int secondLowest = numbers.OrderBy(n=>n).Skip(1).First(); // 7
+
+int count = numbers.Count(); // 5;
+int min = numbers.Min(); // 6;
+
+bool hasTheNumberNine = numbers.Contains (9); // true
+bool hasMoreThanZeroElements = numbers.Any(); // true
+bool hasAnOddElement = numbers.Any (n => n % 2 != 0); // true
+
+int[] seq1 = { 1, 2, 3 };
+int[] seq2 = { 3, 4, 5 };
+IEnumerable<int> concat = seq1.Concat (seq2); // { 1, 2, 3, 3, 4, 5 }
+IEnumerable<int> union = seq1.Union (seq2); // { 1, 2, 3, 4, 5 }
+
+
+49. Query Expressions :- shortcut for writing LINQ queries
+          string[] names = { "Tom", "Dick", "Harry", "Mary", "Jay" };
+			 IEnumerable<string> query =
+			 from n in names
+			 where n.Contains ("a") // Filter elements
+			 orderby n.Length // Sort elements
+			 select n.ToUpper(); // Translate each element (project)
+			 foreach (string name in query) Console.WriteLine (name);	
+
+             int matches = (from n in names where n.Contains ("a") select n).Count();
+		 
+50. Subqueries =>musos.OrderBy (m => m.Split().Last());
+             names
+ .Where (n => n.Length == names.OrderBy (n2 => n2.Length)
+ .Select (n2 => n2.Length).First())
+					 
+				 IEnumerable<string> query = names
+ .Select (n => n.Replace ("a", "").Replace ("e", "").Replace ("i", "")
+ .Replace ("o", "").Replace ("u", ""))
+ .Where (n => n.Length > 2)
+ .OrderBy (n => n);
+
+IEnumerable<string> query = names
+ .Select (n => n.Replace ("a", "").Replace ("e", "").Replace ("i", "")
+ .Replace ("o", "").Replace ("u", ""))
+ .Where (n => n.Length > 2)
+ .OrderBy (n => n);
+ 
+51. The into Keyword 
+    IEnumerable<string> query =
+ from n in names
+ select n.Replace ("a", "").Replace ("e", "").Replace ("i", "")
+ .Replace ("o", "").Replace ("u", "")
+ into noVowel
+ where noVowel.Length > 2 orderby noVowel select noVowel;
+ 
+ IEnumerable<string> query =
+ from n1 in
+ (
+ from n2 in names
+ select n2.Replace ("a", "").Replace ("e", "").Replace ("i", "")
+ .Replace ("o", "").Replace ("u", "")
+ )
+ where n1.Length > 2 orderby n1 select n1;
+
+ 52 Object Initializers 
+        from n in names
+ select new TempProjectionItem
+ {
+ Original = n,
+ Vowelless = n.Replace ("a", "").Replace ("e", "").Replace ("i", "")
+ .Replace ("o", "").Replace ("u", "")
+ }
+ 
+ var intermediate = from n in names
+ select new
+ {
+ Original = n,
+ Vowelless = n.Replace ("a", "").Replace ("e", "").Replace ("i", "")
+ .Replace ("o", "").Replace ("u", "")
+ };
+ 
+ 53. Interpreted Queries :- An example is Microsoft’s Entity Framework 
+                          Query database
+						  IQueryable<string> query = from c in dbContext.Customers
+ where c.Name.Contains ("a")
+ orderby c.Name.Length
+ select c.Name.ToUpper()
+ 
+ IQueryable<string> query = dbContext.customers
+ .Where (n => n.Name.Contains ("a"))
+ .OrderBy (n => n.Name.Length)
+ .Select (n => n.Name.ToUpper());
+
+ IQueryable<Book> query = dbContext.Books
+ .Where (b => b.Title.Contains ("mercury"))
+ .OrderBy (b => b.Title)
+ .Skip (20).Take (20);
+
+54. Disposal and Garbage Collection :-class Test : IDisposable
+  IDisposable, Dispose, and Close :- public interface IDisposable
+                                    using statement
+									 it handle the memory
+    CLR clear the heep automatically
+ 55. Forcing Garbage Collection :- 
+ GC.Collect();
+GC.WaitForPendingFinalizers();
+GC.Collect();
+
+55. Managed Memory Leaks :-CLR manually deallocate
+             memory when an object is no longer required
+ .some objects require explicit tear-down code to release resources such as open files,
+         locks, operating system handles, and unmanaged objects
+  . this is called disposal, and it is supported through the IDisposable interface	
+  .C#’s using statement provides a syntactic shortcut for calling Dispose on objects
+     that implement IDisposable, using a try/finally block:  
+	 using (FileStream fs = new FileStream ("myFile.txt", FileMode.Open))
+     it get comiled into 
+	  finally
+{
+ if (fs != null) ((IDisposable)fs).Dispose();
+}
+56.Close and Stop :- Some types define a method called Close in addition to Dispose.
+         IDbConnection => close can be reopened
+		 Timer or HttpListener => stop => can be start again
+57. three scenarios for not disposing: 
+           1. When you don’t “own” the object; for example, when obtaining a shared object
+via a static field or property	-  System.Drawing namespace - Brushes.Blue 
+   Becuase same instance are used throughout the life of the
+application 
+        2.When an object’s Dispose method does something that you don’t want
+		3.When an object’s Dispose method is unnecessary by design, and disposing that
+object would add complexity to your program
+58 :- MemoryStream,StreamReader,StreamWriter,IDbConnection,DbContext :- they all have disposal
+        call if you don't need them
+59.good practice to unsubscribe from events that the object has subscribed to
+                 internally over its lifetime(e,g signalR)	
+60. A Dispose method itself does not cause (managed) memory 
+       to be released—this can happen only in garbage collection
+	   dispose method mark memorery unsued and garbage collection free the memory
+61.  Garbage collection does not happen immediately after an object is orphaned	   
+				  it happens periodically :-not to a fixed schedule.
+		run time denpend on available memory, the amount of memory allocation,
+		and the time since the last collection
+62. Generational collection :-GC divides the managed heap into three generations.
+        Gen0 :-(short lived-small size)  Objects that have just been allocated	
+        Gen1 :-(short lived- small size)  objects that have survived one collection cycle 	
+		Gen 2:- others
+63. The Large Object Heap(LOH) :- Larged object get saved in LOH :- can not allowd to save in gen0
+                            because we access gen0 more.
+	 The LOH is subject to fragmentation :- Large object assing in this when it goes space is left there
+        we can compact LOH
+          GCSettings.LargeObjectHeapCompactionMode =
+            GCLargeObjectHeapCompactionMode.CompactOnce	
+64. Forcing Garbage Collection :-GC.Collect() => run on full collection 
+                 GC.Collect(0) => run on gen0 
+      GC.Collect();
+      GC.WaitForPendingFinalizers();
+      GC.Collect();
+	  // try to avoid it. we can use it in services like it run once in 1 day
+	    after doing task we can call GC
+65.Array Pooling :- If your application frequently instantiates arrays
+                   you can avoid most of the garbage collection overhead with array pooling
+66. Managed Memory Leaks :-unused objects remaining alive by virtue of unused or forgotten references
+         In unmanaged languages such as C++, 
+                 you must remember to manually deallocate memory when you dont need it
+                  In unmanaged languages such as C++, you must remember to manually deallocate 
+				  or memoery leak will happen 
+	Timers => Forgetten time cause memory leak timer.start() // but not used timer.stop//timer.dispose()			  
+67. Diagnosing Memory Leaks :- long memoryUsed = GC.GetTotalMemory(true);
+                       windbg.exe tool can help	
+					   microsoft clr profiler
+					   SciTech’s Memory Profiler,
+					   Red Gate’s ANTS Memory Profiler.
+				 
+68. Weak References :-Object wil not get cleared by GC =>System.WeakReference
+           If a target is referenced only by one or more weak references, the GC will consider
+            the target eligible for collection
+			var weak = new WeakReference (new StringBuilder ("weak"));
+             var sb = (StringBuilder) weak.Target
+			 // weak.Target get collected by GC but not sb becuae it been assgined to local
+			 
+69. Threading :- it gives concurrency
+             A thread is an execution path that can proceed independently of others.
+           Thread t = new Thread (WriteY); // Kick off a new thread
+           t.Start();
+		   
+		   t.join() // wait untill thread is finished
+		   Thread.Sleep (500);  // pause current thread for specifc time
+		   lock (_locker) // thread will wait if other thread is processing it 
+70. Passing Data to a Thread 
+       Thread t = new Thread ( () => Print ("Hello from t!") );
+       t.Start();
+		new Thread (() =>
+		{
+		 Console.WriteLine ("I'm running on another thread!");
+		 Console.WriteLine ("This is so easy!");
+		}).Start();	 
+		
+		 Thread t = new Thread (Print);
+		 t.Start ("Hello from t!");
+		
+          
+71. Foreground versus Background Threads  :-t.IsBackground = true;
+         By default :Foreground threads
+     Foreground threads keep the application alive for as long as any one of them is running
+	  IsBackground=true when applcation foreground thread end. end the application and 
+       terminate background thread	 
+	   
+72. The Thread Pool :- Whenever you start a thread
+       a few hundred microseconds are spent organizing such things as a fresh local variable stack.
+  		The thread pool cuts this overhead by having a pool of pre-created recyclable threads		 
+73. Tasks :- Thread has limitation like no return, try cath limitation
+          it can overcome by task			
+		var taskObject =  Task.Run (() => Console.WriteLine ("Foo"));
+		Task<int> task = Task.Run (() => { Console.WriteLine ("Foo"); return 3; });
+          Task.Run returns a Task object that we can use to monitor its progress,
+		  
+74 .Wait :- wait untill task is finished
+            Task task = Task.Run (() =>
+{
+ Thread.Sleep (2000);
+ Console.WriteLine ("Foo");
+});
+Console.WriteLine (task.IsCompleted); // False
+task.Wait(); // Blocks until task is complete	
+
+75. Long-running tasks :- By default, the CLR runs tasks on pooled threads, which is ideal for short-running
+compute-bound work	
+  For longer-running and blocking operations you can prevent use of a pooled thread as follows:
+   Task task = Task.Factory.StartNew (() => ...,
+ TaskCreationOptions.LongRunning);
+
+76 Returning values :- Task<int> task = Task.Run (() => { Console.WriteLine ("Foo"); return 3; });
+       int result = task.Result; // Blocks if not already finished
+       Console.WriteLine (result); // 3 
+	   
+77. Continuations :- Work as callback function
+           Task<String> task = Task.Run(() => {
+                return "hi";
+            });
+            var abc = task.GetAwaiter();
+            abc.OnCompleted(() =>
+            {
+                var res = abc.GetResult();
+                Console.WriteLine(res);
+            });	
+78 The Roslyn Compiler :-  written in C#, set of modular libraries
+                           known as Roslyn
+
+						   ////////////////////////////////////////
+                           1 ASP.NET Web Pages 
+2 Razor - c# coding on view
+3 Namespace - group of types  or container
+4 types -class,struct,enum,interface,delegate
+5 type member -fields,properties,constructors,methods
+4 delegate - pointer to the function
+5 Value and Reference Types -  value type stack,struct,int,bool,byte ,Primitive data typesreference type heap-Classes,Delegates,string,interface,object,array,indexes,its defualt value is null -both stored in ram
+6  Boxing and Unboxing -box value type to reference type ; int Val = 1 Object Obj = Val; //Boxing  int i = (int)Obj unboxing
+7 ref keyword and out in method -pass paramter as refrence ref should initialize first and called method not required to assign or initialize
+8 data type :-
+9  complier :- compile code to assembly language
+10 Interfaces -signatures of methods, properties, events or indexers.and can be used as dependcy injection,does not support multiple inhertance but can be achived by interface
+11 Struct -value type
+12 Value type - int,float,double,structs,enums,stack
+13 reference type - interfaces,class,delegate,array,ojbejct,string,heap
+12 Properties :- Properties are named members of classes, structures, and interfaces
+13 Method overloading :- same funtion name with diff parameters,early binding,Static Polymorphism
+13 method overiding :- changing the method of base class,virtual method in base class get overirdden,late binding
+14 Method Hiding : - used in inhertance hide method of base class create method in derived class with new keyword
+15 Polymorphism :- one sample many form Compile time polymorphism/Overloading ,Runtime polymorphism/Overriding
+16 Inhertance :-taking property of one class to another 1 single level,multilevel,does not support multiple inhertance but can be achived by interface
+does not support mutiple inheritacne if addCorlor function present in more that on base class and added too much complexity
+17 Static and Instance class members :- static member can not instantiated,static cant have constructor,fast,Is sealed,Contains only static members
+18 class :- A class is like a blueprint  It defines the data and behavior of a type,A class is a construct that enables you to create your own custom types by grouping together variables of other types, methods 
+
+and events
+18 :- OBJECT :-A class or struct definition is like a blueprint that specifies what the type can do. An object is basically a block of memory that has been allocated and configured according to the blueprint
+19 Mehtods  : -A method is a code block that contains a series of statements
+
+21 operators
+22 public private protected  Access Specifier :public access in anywhere,private access in same class only,protected same class and derived class,
+23 internal  and protected internal Access Specifier :-internal access in current assembly ,protetected Access to current assembly and types derived from containing class
+24 reflection :- Runtime Type Information ,Reflection is the ability of a managed code to read its own metadata for the purpose of finding assemblies,It allows late binding to methods and properties
+25 attribute [obsulete("msg")] :- is declarative tag convey information at runtime, obsulete discard a particular target element to execute
+26 Generics :-Generics allow you to delay the specification of the data type of programming elements in a class or a method, until it is actually used in the program,work with any data type
+27 string n string builder :- String is immutable ,StringBuilder is mutable
+28 partial class,method :-compiler combines  two partial classes into one class ,C# provides the ability to have a single class implementation in multiple .cs
+29 Indexers :- treat object as array to access its value by index 
+30 optional parameters :-An optional parameter has a default value
+30 Named Arguments :-you can send the arguments in any order by ther name showName(name:"abhi",lastName:"yadav").
+31 Code snippets - shortcuts code eg model property,constructor
+32 Dictionary  :- key value pair
+33 array :fixed size access by index,collection of same data type
+33 array list :- contain any data type can grow in size, are boxed and unboxed,it is old
+33 list :- grow in size dynamic sized,provide search sort manipulate,strongly typed list of objects that can be accessed by index,no  are boxed and unboxed,new use list
+33 List collection :- list of collection
+34 Stack and Queue :- stack lifo queue lilo
+35 Threading Protect shared resources,Deadlock ,monitor n lock : -lock keyword ensures that one thread does not enter a critical section of code while another thread is in the critical section.deadlock thread 
+
+lock the resource which other thread need
+
+35 thread :- perform multiple task
+36 Anonymous Methods :- function without name assign to delegate and we can use it 
+37 Lambda Expressions :-annonymous functin  used to create  deleage or expressions
+38 Func Delegate :- Encapsulates a method that has one parameter and returns a value of the type specified by the TResult parameter.
+39 Async and wait :- for synchronus coding
+40 Serialize and desrialize :-
+41 Serialize - converting the object into a form  , stored on a file, database, or memory
+42 Deseialize - getting back the serialized object
+41 extension method  - add method to exsiting type,static method,first parameter is this
+42 route.map    - mapped path of url
+43 checked - check for overflow not constant value
+44 uncheked - ingore overflow exception
+45 unsafe code - u can use pointer 
+46  Data annotations  - used on model class for validation
+47 Helpers  - run function on view @helpers
+48 filters - call filter method before calling actual method action filter,resulter filter , auth filter , excettion filter ,custom filter
+49 cross site scripting    - trusted user enter javascript code in html.
+50 sql injection  -- sql server executed untrusted code
+51 cross site request forgery   - attacker send bugged form to user and users post that form
+52 session fixation  - bugged user machine with session id in cookie,url ,form and users get authenticated with attacker sesssion
+51 sesson hijacking - hijack session by cross site scripting
+52 referrer  - where request coming from
+53 referrer spam-user send fake referrer to search engine
+54 referrer spoofing - send wrong referrer to access others data like image
+55 normalisation 1nf  column of talbe shouled store only one value
+56  2nf not repeation of data -no non-prime attribute
+57  3Nf Transitive functional dependency of non-prime attribute on any super key should be removed ;remove non -prime attibute if depend on super key
+58 class and struct :- classs referencce type,and support inherrtance struct value 
+59 dynamic data-type :- stored and type of data decide at run time ,turn off compile-time checking
+60 stack and heap :- stack at compile time,value type,fast  heap at run time ,slow,
+61 viewbag,viewdata,tempdata :- tempdata from action to action ,viewdata from action to view,viewbag wrapper around viewdata
+62 html helper :- execute code and return string as output
+63 virtual method :- can be redefined in derived classes. overide
+64 abstraction method :-modifier indicates that the thing being modified has a missing or incomplete implementation.we have to overirde it
+65 encapsulation : classes, properties and access modifiers are tools to provide encapsulation in c#,Encapsulation, in the context of C#, refers to an object's ability to hide data and behavior that are not 
+
+necessary to its user
+66 abstraction :-Abstraction means to show only the necessary details to the client of the object
+67 assembly :- gernerated file on compilation dll or .exe
+68 DLL hell :-DLL HELL is the problem where one application will install a newer version of a shared component that is not backward compatible with the version already on the machine.solved with gac by 
+
+versioning
+69 GAC :-Global Assembly cache -C:\Windows\assembly
+70 Sealed :- cant inherit can write sealed on method
+71 Filters :- execute some logic before or after an action method executes Authorization,Action,Exception,Result   filters,
+   Global Level at global.asax  ;Controller level ; action level
+72  diff in encapsulations and abstraction :-Encapsulate hides variables or some implementation that may be changed so often in a class to prevent outsiders access it directly. They must access it via getter        and setter methods.
+     Abstraction is used to hiding something too but in a higher degree(class, interface). Clients use an abstract class(or interface) do not care about who or which it was, they just need to know what it can do
+73 insert val in identity column :- use SET IDENTITY_INSERT Customer ON  
+74  generic and non generic collection :- generic collections are strongly typed ,non-generic collections (ArrayList, Hashtable, SortedKist, Queue etc.) in non generic element stored as object first value get boxed and saved and while retrive value get unboxed
+75. Solid
+      Single Responsibility Principle (SRP) :- One function class do only one thing
+      Open Closed Principle (OCP)  :-Avoid changing existing class once its development and testing is done
+                        Use interface or abstract class and extend the new method that you need
+       Liskov Substitution Principle (LSP) :-use derived class instead of a parent class behave in the same manner without modification
+                                        does not impact parent class
+       Interface Segregation Principle (ISP) :-dont load the interface instead use sub interface to divide the task
+       Dependency Inversion Principle :-high-level modules/classes should not depend on low-level modules/classes
+                                       Both should depend upon abstractions,
+                                       Make code as loosly coupled possible   
+
+ 76 Sessions :
+          Inproc :- In momory object ->  stored in worker processes, not work with load balancer
+          stateserver :- Run by asp.net state service.we give connection string in web.config.
+                          It can be differenc server
+          Sql server :- Session get stored in DB 
+          Custom :- We can use it like JWT
+          Cookieless :- work without cookie by unique Id in url with inproc               
+
+77 WCF  :- Windows Communication Foundation 
+            IService.cs =>  has all the declarations  call contract
+           Operation Contract => opertation happed call Operation Contract
+                             We can call our custom by using attribute
+           Data Contract => transferred and processed within service and they store the values
+                          like model . they have data member like model property
+            Address, Binding and Contract  => defined web.config  
+ 78 Web api vs WCF => 
+            WCF => fast, support all transfer protocol https http and tcp
+            web api => slow , rest api ,http and https only. uses web service and attibute  
+  79 WCF Concurrency ServiceBehavior =>
+             [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Single)]  
+            Single Concurrency Mode =>only 1 thread, othes have to wait while it doing processing
+                                   not allow concurrent calls
+                                   only one request will proceed at any time
+            Multiple Concurrency Mode => allows multiple accesses at the same time
+            Reentrant Concurrency Mode
+ 
+
+
+/////////////////////////////////////////
+1. how to pass data 
+   ViewBag.name="abhi" =>  @ViewBag.Name
+   view(model)    @model Mvc.model.momdName  @modelName.Name 
+2. MVC Application lifeCycle :- 
+        On Application start Global.asax applcationstart method get called
+        Webapi, routes get registerd here 
+
+        route.Config  =>Instance routetable is created 
+        and store on which route which controller action get called
+      
+        appStart folder has route.config and webApi.config
+
+        MVCHandler creates a DefaultControllerFactory processes the RequestContext to controller
+        we can use UnityControllerFactory custom factory to create custom context.
+        Serices get injected buy only interface easy for testing
+
+        Once action method get executed veiw engine render the view
+
+  3. Connection Pooling in ADO.NET :- 
+    reusing your connection to the database instead of always opening and closing connection      
+
+  4. differences Between DataReader and DataSet 
+    DataSet  :-  can modify data. slow lower performance
+    DataReader :- cannot modify data.fast and better performance 
+  5. SqlCommand :- SqlCommand carries the SQL statement that needs to be executed on the database
+           uses connection object to execute SQL queries  
+       SqlCommand :- 
+       ExecuteScalar :- return single value
+       ExecuteNonQuery :- data manipulation on the database, return value int no of row affected
+       ExecuteReader  :-  retrieve rows and columns of data 
+
+6. DataAdapter :-linking the database and connection object
+                 communication between Dataset and data sources.
+                 Data moves ‘in and out’ of the Dataset through DataAdapter.
+                 DataAdapter.fill => get the data 
+                 DataAdapter.update => update the data
+
+7. DataSet :- heart of ADO.NET.
+             collection of DataTable objects     
+
+8. DataView :-  create different views of the data stored in a DataTable
+                manupulate  filter and/or sort                         
+                              

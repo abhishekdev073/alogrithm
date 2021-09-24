@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { data } from '../files/javascript'
+import { dataQ } from '../files/javascriptq'
 @Component({
   selector: 'app-javascript',
   templateUrl: './javascript.component.html',
@@ -18,7 +19,7 @@ export class JavascriptComponent implements OnInit {
     if (event.index == 0) {
       this.jsData = data;
     } else if (event.index == 1) {
-      this.jsData = 2;
+      this.jsData = dataQ;
     }
   }
 

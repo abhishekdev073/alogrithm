@@ -1,17 +1,11 @@
-import { from, Subject } from "rxjs";
- let observer
-
-const subject = new Subject<number>();
-subject.subscribe({next:x=>{console.log(x)}})
-subject.next(1);
-subject.next(2);
-
-subject.next(Math.random()); // every subscriber get same value
-observer.next(Math.random()) //every subscriber get different value
-
-const source = from([1, 2, 3]);
-const subject1 = new Subject();
-source.subscribe({
-      next: (v) => console.log(`observerA: ${v}`)
-});
-source.subscribe(subject1)
+function* genFunc() {
+      yield 3;
+      yield 4;
+      return 5;
+      yield 100;
+}
+var a = genFunc()
+console.log(a.next())// { value: 3, done: false }
+console.log(a.next()) // { value: 3, done: false }
+console.log(a.next()) // { value: 100, done: true }
+console.log(a.next()) // { value: undefined, done: true }

@@ -1,4 +1,4 @@
-export const data = [{
+export const data= [{
     question: "syntax parser",
     responses: [{
         value: "A program that read your code and determine and what it does and if its grammar is valid",
@@ -229,12 +229,12 @@ export const data = [{
             "this will get return from the function",
             "Function constructor :-Normal function that is used to construct a object",
             "The 'this' variable point to new empty object. and that object is get return automatically ",
-  
+
         ]
     },
     {
         value: " Construct a object with a function  ",
-        image:"./assets/images/new.png",
+        image: "/new.png",
     },
     ]
 },
@@ -286,7 +286,7 @@ export const data = [{
             "The 'this' variable point to new empty object. and that object is get return automatically ",
         ]
     },
-  
+
     ]
 },
 {
@@ -294,14 +294,14 @@ export const data = [{
     responses: [{
         value: "xxxxxxxxxxxx",
         desc: [
-          "  Var user = {",
-          "      name:'default',",
-          "      lName:'default',",
-          "      getFullName:function(){",
-          "          return this.name+ this.lName",
-          "      }",
-          "  }",
-          " var john = Object.create(user)"
+            "  Var user = {",
+            "      name:'default',",
+            "      lName:'default',",
+            "      getFullName:function(){",
+            "          return this.name+ this.lName",
+            "      }",
+            "  }",
+            " var john = Object.create(user)"
         ]
     }]
 },
@@ -318,36 +318,36 @@ export const data = [{
     question: "Inheritance 2 class",
     responses: [{
         desc: [
-       "     class User{",
-       "         constructor(name,lname){",
-       "               this.name = name;",
-       "              this.lName = lname;",
-       "            }",
-       "                getFullName(){",
-       "              return this.name + this.lName;",
-       "            }",
-       "       }",
-       "    class SmartUser extends User{",
-       "                  constructor(name,lname){",
-       "                         super(name,lname);",
-       "                         this.age = age;",
-       "                   }",
-       "                    fullDetail = function(){",
-       "                           return 'my full details is +' this.name +' '+this.lname +'age ='+ this.age;",
-       "                     }",
-       "     }                                    ",
-       "            ",
-       "    var smartUser = new SmartUser('abhishek','yadav',27);",
-       "    console.log(smartUser.getFullName())",
-       "    console.log(smartUser.name)",
-       "    console.log(smartUser.lName)",
-       "    console.log(smartUser.age)",
-       "    console.log(smartUser.fullDetail())",
-       ]
+            "     class User{",
+            "         constructor(name,lname){",
+            "               this.name = name;",
+            "              this.lName = lname;",
+            "            }",
+            "                getFullName(){",
+            "              return this.name + this.lName;",
+            "            }",
+            "       }",
+            "    class SmartUser extends User{",
+            "                  constructor(name,lname){",
+            "                         super(name,lname);",
+            "                         this.age = age;",
+            "                   }",
+            "                    fullDetail = function(){",
+            "                           return 'my full details is +' this.name +' '+this.lname +'age ='+ this.age;",
+            "                     }",
+            "     }                                    ",
+            "            ",
+            "    var smartUser = new SmartUser('abhishek','yadav',27);",
+            "    console.log(smartUser.getFullName())",
+            "    console.log(smartUser.name)",
+            "    console.log(smartUser.lName)",
+            "    console.log(smartUser.age)",
+            "    console.log(smartUser.fullDetail())",
+        ]
     }]
 },
 {
-    question:  "use strict",
+    question: "use strict",
     responses: [{
         value: "Add extra rule while it parse the code like if we Assign value to variable without declaring it name ='abhishek' throw error",
         desc: [
@@ -358,75 +358,42 @@ export const data = [{
 {
     question: "Library like jquery",
     responses: [{
-        value: "xxxxxxxxxxxx",
-        image:"./assets/images/lib-like-jquery.png",
+        image: "/lib-like-jquery.png",
         desc: [
 
         ]
     }]
 },
 {
-    question: "33333333",
+    question: "Destructuring, Spread and Rest Parameters",
     responses: [{
-        value: "xxxxxxxxxxxx",
-        desc: [
+        value: "Destructuring :-Assign object properties or array items to variables.",
+        image: "/destructuring.png",
 
+    }, {
+        value: " Spread(...) :-unpacked or expanded  array or object",
+        desc: [
+            "Make shallow copies of data structures",
+            "const concatArray =[...arr1,...arr2];",
+            "const updatedUsers = [...users, newUser]"
         ]
-    }]
+    },
+    {
+        value: "Rest Parameters(...) :- instead of packing it create the array or object",
+        desc: [
+            "function func(...args)",
+            "function func(one,two...args) {",
+            "func(1, 2, 3, 4, 5, 6)",
+            "const [first, ...rest] = ['1', '2', '3',4]",
+        ]
+    }
+    ]
 },
 {
-    question: "33333333",
+    question: "Generator functions",
     responses: [{
-        value: "xxxxxxxxxxxx",
-        desc: [
-
-        ]
+        value: "They can be stopped midway and then continue from where it had stopped",
+        image: "/generator.png",
     }]
 },
-{
-    question: "33333333",
-    responses: [{
-        value: "xxxxxxxxxxxx",
-        desc: [
-
-        ]
-    }]
-},
-{
-    question: "33333333",
-    responses: [{
-        value: "xxxxxxxxxxxx",
-        desc: [
-
-        ]
-    }]
-},
-{
-    question: "33333333",
-    responses: [{
-        value: "xxxxxxxxxxxx",
-        desc: [
-
-        ]
-    }]
-},
-{
-    question: "33333333",
-    responses: [{
-        value: "xxxxxxxxxxxx",
-        desc: [
-
-        ]
-    }]
-},
-{
-    question: "33333333",
-    responses: [{
-        value: "xxxxxxxxxxxx",
-        desc: [
-
-        ]
-    }]
-},
-
 ]

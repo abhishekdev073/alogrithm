@@ -25,12 +25,15 @@ export class Service1Service {
 
   abhi = 'abhishek'
   getData() {
-    return this.data;
+    return "hi";
   }
   getHeroes(): Observable<any> {
     return of(this.data);
   }
 
+  getDataObs() {
+    return of("I am from observer");
+  }
   getHero(id): Observable<any> {
     return of(this.data.filter(x => x.id == id));
   }

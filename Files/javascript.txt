@@ -1,0 +1,506 @@
+1 syntax parser :- A program that read your code and determine and what it does and if its grammar is valid
+2 Lexical environment :- where something sit physically in the code you write
+3 Execution context :- Wrapper to help manage the code that is running, when function is called new execution context is crated
+4 Global :- Not inside function
+5 Hoisting :- Memory get allocated for variable and function while Execution context get created
+6 JavaScript is single threaded,
+7 Scope :-Where variable is available in your code
+8 Let : block scope, not Hoisting, can not redeclare,get different variable in Memory each time loop run
+9 Types in JavaScript :- 1. Primitive Types :- types of data that represent single data. that is not a object 
+                    Value type we can not change that we have reassign value
+10 Dynamic type :- We don't tell what kind of data we variable hold its get decided at runtime
+11 Object :- Key value pair var obj  = new Object()
+12 Object literal :- var obj = {}
+13 Function are object,we can attach property, it has property NAME,CODE  
+14 First class function : Everything we can do with other types we can do with function.Assign them to variable,pass them, create them on fly
+15 Function statement :- if  dont return anything
+16 Function expression :- unit of code that results in a value. it doest have to save variable
+16 Anonymous  function : function does not have name with reference with a variable
+17 Pass by value (Primitive type) , pass by reference(arr,object) :-
+18 Mutated :mean can be change, Immutable :- can not change
+19 this :- from where function is being called
+20 Spread parameters :-(val1,val2 ,...otherParameter) access all parameters arguments
+21 IIFE :Immediately invoke function :- function(){}() : (function(val1){}('parameters'))
+22  (function(window,val1){}(window,'parameters')) :- pass paramter to 
+23 Closers :- function remember its outer variable and function 
+24 Call Apply and Bind :- Change to this 
+                      var changedThis = myFunction.bind(this);changedThis();
+                      myFunction.call(this,param1,param2);  pass parameter 
+                       myFunction.apply(this,[param1,param2]); pass array 
+
+25 Curring :- Crating copy of function parameter with some preset parameter :/ used in mathematical 
+              function multi(a,b){
+                  return a*b;
+              }         
+
+              var multiby2 = multi.bind(this,2);
+              multiby2(4);
+
+26 Inheritance :- Object get access to properties and method of another object
+27 Prototype :- All object in JavaScript has property prototype which is reference to other object.
+              it get used by new operator
+28 New  :- var john = new User() , new will create new object var ={} .if you don't return value then JavaScript
+         will return new object that is crated by new
+         Construct a object with a function  
+                                 function User(fname,lname){
+                                        this.name= fname
+                                        this.lName =lname;
+                                        this.getFullName = function(){
+                                            return this.name +this.lname;
+                                        }
+                                    }   
+          //////////////Inheritance 1//////////////////////////////////
+                                    function User(fname,lname){
+                                        this.name= fname
+                                        this.lName =lname;
+                                    }  
+                                    User.prototype.getFullName = function(){
+                                            return this.name +this.lName;
+                                     }
+
+                                     function SmartUser(fname,lname,age){
+                                         User.call(this,fname,lname);
+                                         this.age = age;
+                                     }
+                                     SmartUser.prototype =  User.prototype;
+                                   //   SmartUser.prototype = Object.create(User.prototype);
+                                     SmartUser.prototype.fullDetail = function(){
+                                            return "my full details is " this.name +" "+this.lname +"age ="+ this.age;
+                                     }
+                                     var smartUser = new SmartUser('abhishek','yadav',27);
+                                     console.log(smartUser.getFullName())
+                                     console.log(smartUser.name)
+                                     console.log(smartUser.lName)
+                                     console.log(smartUser.age)
+                                     console.log(smartUser.fullDetail())
+
+
+
+
+
+               Don't use method inside function if we have multiple object function get method get repeated in Memory
+               User.prototype.getFullName = function(){
+                                            return this.name +this.lname;
+                                        }
+               instead of that Assign that method to prototype it will get crated only once in Memory                             
+ Function constructor :-Normal function that is used to construct a object
+                         The 'this' variable point to new empty object. and that object is get return automatically                                                
+ 29 Pure Prototype Inheritance :- 
+            Var user = {
+                name:'default',
+                lName:'default',
+                getFullName:function(){
+                    return this.name+ this.lName
+                }
+            }
+
+            var john = Object.create(user)
+ 30 class :- JavaScript does not have class internally it uses prototype : its Synthetic sugar around object
+        //Synthetic sugar :-different way to type something it doest change how it works under the hood
+                        //////////////Inheritance 2 class//////////////////////////////////
+                             class User{
+                                 constructor(name,lname){
+                                       this.name = name;
+                                      this.lName = lname;
+                                    }
+                                        getFullName(){
+                                      return this.name + this.lName;
+                                    }
+                               }
+                            class SmartUser extends User{
+                                          constructor(name,lname){
+                                                 super(name,lname);
+                                                 this.age = age;
+                                           }
+                                            fullDetail = function(){
+                                                   return "my full details is +" this.name +" "+this.lname +"age ="+ this.age;
+                                             }
+                             }                                    
+                                    
+                            var smartUser = new SmartUser('abhishek','yadav',27);
+                            console.log(smartUser.getFullName())
+                            console.log(smartUser.name)
+                            console.log(smartUser.lName)
+                            console.log(smartUser.age)
+                            console.log(smartUser.fullDetail())
+
+
+31 "use strict" : Add extra rule while it parse the code like if we Assign value to variable without declaring it
+                     name ='abhishek' throw error
+
+///////////////////////////Library like jquery ///////////////////////////////
+ (function(global) {
+    var MyLib = function(val1, val2, val3) {
+        return new MyLib.init(val1, val2, val3);
+    }
+    MyLib.prototype = {
+        fullName:function(){
+            return this.val1 + this.val2 + this.val3
+        },
+         hello:function(){
+             return "hello"this.val1
+        },
+         hi:function(name){
+            return "hi "+name
+        }
+    };
+    MyLib.init = function(val1, val2, val3) {
+       var self = this;
+       self.val1 = val1
+       self.val2 = val2
+       self.val3 = val3
+    }
+    MyLib.init.prototype = MyLib.prototype;
+    global.MyLib = global.G$ = MyLib;
+}(window));
+var g = G$('abhishek','yadav','234')
+console.log(g.hi('22222'))
+console.log(g.hello())
+
+////
+32 Destructuring, Spread and Rest Parameters
+   Destructuring :-Assign object properties or array items to variables.
+     const obj = {
+                id: 1,
+                title: 'Hi',               
+                user: {
+                    name: 'abhi',
+                    lName: 'yadav',
+                },
+            }
+       const {title,user:{name}} = obj 
+       console.log(name)  // abhi
+       const { length } = 'A string' // 8
+      //////////////////
+       const arr = [1, 2, [3, 4], 5]
+       const [first,second,[nest1,nest],last] = arr
+       console.log(last) 
+
+      ///////////////////// 
+      Spread(...) :-unpacked or expanded  array or object
+      Make shallow copies of data structures
+      const concatArray =[...arr1,...arr2];
+      const updatedUsers = [...users, newUser]
+
+      Rest Parameters(...) :- instead of packing it create the array or object
+      function func(...args)
+      function func(one,two...args) {
+      func(1, 2, 3, 4, 5, 6)
+      const [first, ...rest] = ['1', '2', '3',4]
+
+33 generator functions :- They can be stopped midway and then continue from where it had stopped
+        function* genFunc(){
+        yield 3;
+        yield 4;
+        }
+        var a = genFunc()
+        console.log(a.next()) {value:3,done:false}
+        console.log(a.next()) {value:3,done:true}
+
+
+      /////////////////I////////////////
+0 :- possible ways to create objects in JavaScript
+     1. Object constructor :- var object = new Object();
+     2. Object's create method :- var object = Object.create(null);
+     3. Object literal :- var object = {};
+     4. Function constructor
+            function Person(name){
+              this.name=name;
+              this.age=21;
+            }
+            var object = new Person("abhi");
+     5. Function constructor with prototype
+                    function Person(){}
+                    Person.prototype.name = "abhi";
+                    var object = new Person();       
+     6. ES6 Class 
+                  class Person {
+                    constructor(name) {
+                        this.name = name;
+                    }
+                  }
+                  var object = new Person("abhi");
+
+
+1 Implicit Type Coercion :- 
+                    var x = 3;
+                    var y = "3";
+                    x + y // Returns "33" 
+2 Higher Order Functions
+  Functions that operate on other functions 
+    function higherOrder(fn) {
+  fn();
+}
+     
+higherOrder(function() { console.log("Hello world") }); 
+function higherOrder2() {
+  return function() {
+    return "Do something";
+  }
+}
+        
+var x = higherOrder2();
+x()   // Returns "Do something"
+
+3 this
+   The “this” keyword refers to the object that the function is a property of.
+   The value of “this” keyword will always depend on the object that is invoking the function.
+   From where its been called
+
+4 memoization :- function cache the value
+5 constructor function :- create objects in javascript
+6 classes :-syntactic sugars for constructor functions.
+  
+// Before ES6 version, using constructor functions
+function Student(name,rollNumber,grade,section){
+  this.name = name;
+  this.rollNumber = rollNumber;
+  this.grade = grade;
+  this.section = section;
+}
+
+// Way to add methods to a constructor function
+Student.prototype.getDetails = function(){
+  return 'Name: ${this.name}, Roll no: ${this.rollNumber}, Grade: ${this.grade}, Section:${this.section}';
+}
+
+
+let student1 = new Student("Vivek", 354, "6th", "A");
+student1.getDetails();
+// Returns Name: Vivek, Roll no:354, Grade: 6th, Section:A
+
+// ES6 version classes
+class Student{
+  constructor(name,rollNumber,grade,section){
+    this.name = name;
+    this.rollNumber = rollNumber;
+    this.grade = grade;
+    this.section = section;
+  }
+
+  // Methods can be directly added inside the class
+  getDetails(){
+    return 'Name: ${this.name}, Roll no: ${this.rollNumber}, Grade:${this.grade}, Section:${this.section}';
+  }
+}
+
+let student2 = new Student("Garry", 673, "7th", "C");
+student2.getDetails();
+// Returns Name: Garry, Roll no:673, Grade: 7th, Section:
+
+
+8   Set :-collection of unique elements
+   const newSet = new Set([1,2,2,3,4]); // 1,2,3,4
+
+9 Weakset  :-value should be object
+            collection of object
+              var ws = new WeakSet();
+              var a ={name:'abhi',lname:'yaddv'}
+              var b ={name:'abhi',lname:'yaddv'}
+              var c ={name:'abhi',lname:'yaddv'}
+              ws.add(a)
+              ws.add(b)
+              console.log('aw',ws.has(a)) // true
+              console.log('aw',ws.has(b))  // true
+              console.log('aw',ws.has(c))  // false
+   
+ 10 :- Map :- store key-value pairs.
+       The key-value pairs can be of both primitive and non-primitive types.
+ 
+  const map1 = new Map();
+  map1.set(Key, value);  // Key and Value can be anything 
+  
+
+11. WeakMap :- Key should be object
+              let obj = {name:"Vivek"};
+              const map3 = new WeakMap();
+              map3.set(obj, {age:23});
+              console.log('a',map3.get(obj))
+12 Temporal Dead Zone :- trying to access a variable before it is initialized(let const).
+    x = 23; // Gives reference error
+    let x;
+13 use fo closer 
+   // new Array get called every time 
+        function bigFunc(element){
+          let newArray = new Array(700).fill('♥');
+          return newArray[element];
+        }
+
+        console.log(bigFunc(599)); // Array is created
+        console.log(bigFunc(670)); // Array is created again
+
+       // closer solution
+        function bigFunc(){
+            let newArray = new Array(700).fill('♥');
+            return (element) => newArray[element];
+          }
+
+          let getElement = bigFunc(); // Array is created only once
+          getElement(599);
+          getElement(670);
+
+      2.  i would 2 always
+         function randomFunc(){
+            for(var i = 0; i < 2; i++){
+              setTimeout(()=> console.log(i),1000);
+            }
+          }
+          //////////////////solution///////
+          function randomFunc(){
+            for(var i = 0; i < 2; i++){
+            (function(i){
+                setTimeout(()=>console.log(i),1000);
+              })(i);
+            }
+          }
+14. lambda or arrow functions :-   function is a shorter syntax
+    don't have this, arguments, super, or new.target
+15. first order function : function don't accept ofr return function
+16. first class function :- function is treated as var. we can pas, assign  and call  
+17.  higher order function :- function accept and return function
+18. unary function :- Accept 1 arguments
+      const unaryFunction = a => console.log (a + 10);
+19. IndexedDB :-client-side storage of larger amounts of structured data  
+20. What is promise chaining
+                      new Promise(function(resolve, reject) {
+                        setTimeout(() => resolve(1), 1000);
+                      }).then(function(result) {
+                        console.log(result); // 1
+                        return result * 2;
+                      }).then(function(result) {
+                        console.log(result); // 2
+                        return result * 3;
+                      }).then(function(result) {
+                        console.log(result); // 6
+                        return result * 4;
+                      });
+21. Promise.race :- like promise.all -> Only return which promise got resolved first
+22. double exclamation(!!) :- resulting type is a boolean. 
+         !!(e.g. 0, null, undefined, etc.) false
+23. Eval :-evaluates JavaScript code represented as a string
+       eval("console.log(eval('1 + 2'));")   
+24. event flow
+    Top to Bottom(Event Capturing)   
+    Bottom to Top (Event Bubbling)   
+  
+26.  Object.freeze(object)  Object.seal(object);
+     Can not add new property to object in both case.
+     In seal we can changes existing property
+     In seal we can can't change property
+27. enumerable key and value pairs
+  for (let [key, value] of Object.entries(object)) {}    
+28. get the list of keys of any object :- Object.keys(user)
+29. What are javascript accessors,Get , Set
+              var user = {
+                firstName: "John",
+                lastName : "Abraham",
+                language : "en",
+                get lang() {
+                  return this.language;
+                }
+                set lang(lang) {
+                this.language = lang;
+                }
+              };
+              console.log(user.lang); // getter access lang as en
+              user.lang = 'fr';
+              console.log(user.lang); // setter used to set lang as fr
+30. nullish coalescing operator : returns its right-hand side operand when its left-hand side operand is null or undefined
+            console.log(null ?? true); // true
+            console.log(false ?? true); // false
+            console.log(undefined ?? true); // true
+31. easiest way to ignore promise errors :- await promise.catch(e => void e);
+32. How to detect if a function is called as constructor
+    new.target => called with new
+33. Proper Tail Call. it work like recursions but does not create stack like recursion
+34.Promise error handle 
+ Promise.reject('promised value').then(function() {
+  console.log('123');
+}).catch(e=>console.log(e))   
+
+          Promise.reject('promised value').then(function() {
+            console.log('123');
+          }).catch(e=>console.log(e)) 
+          Promise.resolve('promised value').then(function() {
+            console.log('123');
+              throw new Error('error');
+          }).catch(e=>console.log(e))
+35.  Function constructor and function declaration
+       Function constructor :- do not create closers
+          var a = 100;
+          function createFunction() {
+              var a = 200;
+              return new Function('return a;');
+          }
+          console.log(createFunction()()); // 100
+
+            Function declaration:
+            var a = 100;
+            function createFunction() {
+                var a = 200;
+                return function func() {
+                    return a;
+                }
+            }
+            console.log(createFunction()()); // 200
+
+36. How to cancel a fetch request =>AbortController
+              const controller = new AbortController();
+              const { signal } = controller;
+
+              fetch("http://localhost:8000", { signal }).then(response => {
+                  console.log(`Request 1 is complete!`);
+              }).catch(e => {
+                  if(e.name === "AbortError") {
+                      // We know it's been canceled!
+                  }
+              });
+
+              fetch("http://localhost:8000", { signal }).then(response => {
+                  console.log(`Request 2 is complete!`);
+              }).catch(e => {
+                  if(e.name === "AbortError") {
+                      // We know it's been canceled!
+                    }
+              });
+
+              // Wait 2 seconds to abort both requests
+              setTimeout(() => controller.abort(), 2000);
+37. enhanced object literals
+
+        //ES6
+        var x = 10, y = 20
+        obj = { x, y }
+        console.log(obj); // {x: 10, y:20}
+        //ES5
+        var x = 10, y = 20
+        obj = { x : x, y : y}
+        console.log(obj); // {x: 10, y:20}
+
+ 38. swap variables in destructuring assignment 
+     var x = 10, y = 20;
+      [x, y] = [y, x];
+      console.log(x); // 20
+      console.log(y); // 10
+39. template literals :-`abhishek
+                              yadav`
+
+              
+            
+
+
+        
+
+
+
+
+      
+
+     
+
+
+    
+                                          
+
+
+   

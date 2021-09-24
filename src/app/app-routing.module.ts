@@ -11,6 +11,12 @@ import { AngularComponent } from './angular/angular.component';
 import { JavascriptComponent } from './javascript/javascript.component';
 import { HomeComponent } from './home/home.component';
 import { CssComponent } from './css/css.component';
+import { NodeComponent } from './node/node.component';
+import { MongooseComponent } from './mongoose/mongoose.component';
+import { DotNetComponent } from './dot-net/dot-net.component';
+import { ReactComponent } from './react/react.component';
+import { AwsComponent } from './aws/aws.component';
+import { SqlComponent } from './sql/sql.component';
 
 
 const routes: Routes = [
@@ -25,6 +31,23 @@ const routes: Routes = [
   },
   {
     path: 'javascript', component: JavascriptComponent
+  },
+  {
+    path: 'mongodb', component: MongooseComponent
+  },
+  {
+    path: 'dotnet', component: DotNetComponent
+  },
+  {
+    path: 'react', component: ReactComponent
+  },
+  {
+    path: 'aws', component: AwsComponent
+  },
+  {
+    path: 'node', component: NodeComponent
+  }, {
+    path: 'sql', component: SqlComponent
   },
   { path: '**', component: NotFoundComponent }
 ];

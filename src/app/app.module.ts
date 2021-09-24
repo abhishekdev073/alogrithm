@@ -24,6 +24,12 @@ import { JavascriptComponent } from './javascript/javascript.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { CssComponent } from './css/css.component';
+import { NodeComponent } from './node/node.component';
+import { MongooseComponent } from './mongoose/mongoose.component';
+import { DotNetComponent } from './dot-net/dot-net.component';
+import { ReactComponent } from './react/react.component';
+import { AwsComponent } from './aws/aws.component';
+import { SqlComponent } from './sql/sql.component';
  
 @NgModule({
   declarations: [
@@ -42,6 +48,12 @@ import { CssComponent } from './css/css.component';
     HeaderComponent,
     HomeComponent,
     CssComponent,
+    NodeComponent,
+    MongooseComponent,
+    DotNetComponent,
+    ReactComponent,
+    AwsComponent,
+    SqlComponent,
 
   ],
   imports: [
@@ -61,7 +73,8 @@ import { CssComponent } from './css/css.component';
   providers: [
     Service1Service,
     httpInterceptorProviders,
-    { provide: HeroService, useExisting: Service1Service }],
+    HeroService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -130,10 +130,10 @@ export const data = {
         "question": "Component Interaction",
         "responses": [{
             "value": "Child to parent ------Input & Output",
-            "image":"./parent2child1.png",
+            "image": "./parent2child1.png",
         },
         {
-            "image":"./parent2child2.png",
+            "image": "./parent2child2.png",
         },
         {
             "value": "Parent to child -- Local variable",
@@ -142,17 +142,17 @@ export const data = {
             ]
         },
         {
-            "image":"./parent2child3.png",
+            "image": "./parent2child3.png",
         },
         {
-            "image":"./parent2child4.png",
+            "image": "./parent2child4.png",
         },
         {
             "value": "@ViewChild() -- Inject the child component into the parent as a ViewChild.",
-            "image":"./parent2child5.png"
+            "image": "./parent2child5.png"
         },
         {
-            "image":"./parent2child6.png"
+            "image": "./parent2child6.png"
         },
         {
             "value": "Parent and children communicate via a service"
@@ -414,9 +414,9 @@ export const data = {
                 "      create app.routing module add in app.module  ",
                 "      add path in routes array"
             ]
-        }, 
+        },
         {
-            image:"routes1.png"
+            image: "routes1.png"
         },
         {
             value: "Nested route add route-outlet and matching url get loaded"
@@ -567,7 +567,7 @@ export const data = {
             "desc": ["more scalable, reusable, and testable .model get handle explicitly"]
         },
         {
-            image:"form1.png",
+            image: "form1.png",
         },
         {
             value: "profileForm.value to get",
@@ -576,11 +576,11 @@ export const data = {
         },
         {
             value: "FormBuilder :- Its service provide reactive form module",
-           image:"form2.png"
+            image: "form2.png"
         },
         {
             value: "Dynamic forms: FormArray :- its uses FormArray its an alternative to FormGroup. used to create dynamic form ",
-            image:"form3.png",
+            image: "form3.png",
             desc: [
                 "To change the controls in the array, use the push, insert, removeAt or clear methods in FormArray itself."
             ]
@@ -603,7 +603,7 @@ export const data = {
         "question": " Custom form validation",
         "responses": [{
             "value": "In reactive form we just pass function to formcontrol along with other validator",
-            "image":"form4.png",
+            "image": "form4.png",
             "desc": [
                 "  in Template-driven forms we create the directive and add to the input field",
             ]
@@ -720,12 +720,12 @@ export const data = {
             value: "use for animation. State of element changes from one state to other like 'Open'=>'closed or 'closed'=>'Open' ",
             desc: [,
                 "when change the value of isOpen based on 'open','closed','abhi', it will  pick mentioned style with transition delay",
-                ]
+            ]
         },
         {
-            image:"animation1.png"
+            image: "animation1.png"
         }
-    ]
+        ]
     },
     {
         question: "Observable",
@@ -736,7 +736,7 @@ export const data = {
             ]
         },
         {
-            image:"observable1.png",
+            image: "observable1.png",
         },
         {
             value: "Observers :-Observers are just objects with three callbacks	",
@@ -766,47 +766,171 @@ export const data = {
         ]
     },
     {
-        question:"Subject",
-        responses:[{
+        question: "Subject",
+        responses: [{
             value: "special type of Observable that allows values to be multicasted to many Observers. ",
-            image:"subject1.png",
+            image: "subject1.png",
             desc: [
-        "        its do the work of both oberable and observer",
-        "        Every Subject is an Observable.",
-        "        Every Subject is an Observer.",
-     
-        "     //  While plain Observables are unicast (each subscribed Observer owns an independent execution of the Observable), Subjects are multicast.		",
-        "     Observable and subject :-Subject is multicasted ,Observable is unicast Observable	",
-        "     BehaviorSubject :-	Its maintain the last emitted value when you subscribe it get emitted first",
-        "                             const subject = new BehaviorSubject(0); // first value will be 0",
-        "                          its always maintain the current value like last next value.",
-        "                         ",
-        "     ReplaySubject :-  const subject = new ReplaySubject(2); when new subscriber it last 2 value emitted",
-        "     AsyncSubject :- const subject = new AsyncSubject(); // when subject.complete() then only last value get emitted",
-        "     asyncScheduler :- code run in aync",
-        "                       var observable = new Observable((proxyObserver) => {proxyObserver.next(1);proxyObserver.next(2)proxyObserver.complete();",
-        "                       }).pipe(observeOn(asyncScheduler));",
+                "        its do the work of both oberable and observer",
+                "        Every Subject is an Observable.",
+                "        Every Subject is an Observer.",
+
+                "     //  While plain Observables are unicast (each subscribed Observer owns an independent execution of the Observable), Subjects are multicast.		",
+                "     Observable and subject :-Subject is multicasted ,Observable is unicast Observable	",
+                "     BehaviorSubject :-	Its maintain the last emitted value when you subscribe it get emitted first",
+                "                             const subject = new BehaviorSubject(0); // first value will be 0",
+                "                          its always maintain the current value like last next value.",
+                "                         ",
+                "     ReplaySubject :-  const subject = new ReplaySubject(2); when new subscriber it last 2 value emitted",
+                "     AsyncSubject :- const subject = new AsyncSubject(); // when subject.complete() then only last value get emitted",
+                "     asyncScheduler :- code run in aync",
+                "                       var observable = new Observable((proxyObserver) => {proxyObserver.next(1);proxyObserver.next(2)proxyObserver.complete();",
+                "                       }).pipe(observeOn(asyncScheduler));",
             ]
         },]
     },
     {
-        question:"<ng-template> and <ng-container>",
-        responses:[{
-            value:"Use as a grouping element",
-            desc:[
-"<ng-template> :- It is never displayed html directly. Use for structural directives such as: ngIf, ngFor, ngSwitch",
-"<ng-container> : simple syntax. can be used direclty with html no need of extra directive like *ngIf	"
+        question: "<ng-template> and <ng-container>",
+        responses: [{
+            value: "Use as a grouping element",
+            desc: [
+                "<ng-template> :- It is never displayed html directly. Use for structural directives such as: ngIf, ngFor, ngSwitch",
+                "<ng-container> : simple syntax. can be used directly with html no need of extra directive like *ngIf	"
             ]
         }]
     },
     {
-        question:"if else",
-        responses:[{
-            desc:[
-               ' <div *ngIf="condition else elseBlock">div1</div> ',
-               ' <div #elseBlock> div2</div> '
+        question: "if else",
+        responses: [{
+            desc: [
+                ' <div *ngIf="condition else elseBlock">div1</div> ',
+                ' <div #elseBlock> div2</div> '
             ]
         }]
+    },
+    {
+        question: "Test",
+        responses: [{
+            value: "Angular uses jasmine and karma for test",
+            desc: [
+                'In angular.json file test builder get defined',
+                'test builder contain entry point for test =>main = src/test.ts',
+                'test builder has config file karma.conf.js',
+                'Its also contain other file that will get used e.g. style files'
+            ]
+        },
+
+        {
+            value: 'karma.conf.js',
+            desc: [
+                'configuration file for karma,jasmine, instanbull',
+                "Its has port,restartOnFileChange,singleRun,autoWatch",
+                'singleRun :true // it run the test close the browser'
+            ]
+        },
+        {
+            value: 'test.ts file',
+            desc: ["create the environment fot test and Define which file to run"],
+            image: 'testtsFile.png'
+        },
+        {
+            value: 'code-coverage',
+            desc: [
+                "ng test --no-watch --code-coverage",
+                'run command it create codecoverage/index.html file  gives coverage'
+            ]
+        },
+
+        {
+            value: 'beforeEach',
+            desc: [
+                'it get run before every test case.',
+                "we need to configure all the module,component.service which our component uses",
+                'you can initialize services /component in every test or just in beforeEach'
+            ]
+        },
+        {
+            value: "TestBed",
+            desc: [
+                'testbed dynamically create Angular test module',
+                'In angular App DI inject services to our component automatically',
+                'we use testbed to inject and create test module',
+                'Inject service in module by TestBed.inject(serviceName) or TestBed.get(serviceName)'
+            ]
+        },
+
+        {
+            value: 'HTMLElement',
+            desc: [
+                'work with browser',
+                'const htmlElement: HTMLElement = fixture.nativeElement;'
+            ]
+        },
+
+        {
+            value: 'DebugElement',
+            desc: [
+                'can work without browser environment',
+                'const debugElement: DebugElement = fixture.debugElement;',
+                'const htmlElement1: HTMLElement = debugElement.nativeElement',
+            ]
+        },
+
+        {
+            value: 'By.css',
+            desc: [
+                ' used to select html element in not browser env with DebugElement',
+                ' const bannerDe: DebugElement = fixture.debugElement;',
+                ' const paragraphDe = bannerDe.query(By.css("p"));',
+                ' const p: HTMLElement = paragraphDe.nativeElement;',
+            ]
+        },
+        {
+            value: 'fixture.detectChanges',
+            desc: [
+                'update the value on html'
+            ]
+        },
+        {
+            value: 'dispatchEvent',
+            desc: [
+                '  Change an input value with dispatchEvent()',
+                '  when we set value to input even after detectchagnes our comp dont get those value',
+                '  nameInput.value = "name change";',
+                '  nameInput.dispatchEvent(new Event("input"));',
+                '  fixture.detectChanges();',
+                '  now angular will update the binding	',
+            ]
+        },
+        {
+            value:'Spy',
+            desc:[
+                'Spy method of service',
+                'spyOn(service, "getPromiseData").and.returnValue(Promise.resolve("55551"))'
+            ]
+        },
+        {
+            value:'tick()',
+            desc:[
+                'it will wait until all pending asynchronous activities finish',
+                'wait for given time used inside fakeAsync'
+            ]
+        },
+        {
+            value:'tick, Async and fakeAsync',
+            desc:[
+                'To work with async code we use all this'
+            ]
+        }
+
+        ]
+    },
+    {
+        question: 'Text Example',
+        responses: [{
+            style:{width:'800px'},
+            image:'testExample.png'
+        }]
     }
-    ]
+]
 }

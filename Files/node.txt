@@ -1,0 +1,47 @@
+1. JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser
+2. Node => v8 + libUv
+3. V8(C++,JS) :- Open source javascript engine created by google. Make 
+4. libUv(C++) :- open source project give access to OS,File sytem, networking : 
+5. Node lib file contains the js code its called src c++ code, v8 transalte js value to c++
+6. Thread :- Unit of instruction waiting to get executed
+Node program run in 1 thread
+7. Event Loop :- Every time event loop is run called tick
+      Event loop check for condtion if its true then it run event loop
+	  1. Any pending settimeout,setInterval, setImediate
+      2. Any Pending OS task. ex:any server listening to any port
+      3. Any pendinglong running opertaion eg: Fs module  
+Event loop do
+  1. Look of pending timers and any callback function
+  2. Look of pending OS task and Pending opertaion node execute callback  
+  3. Pause execution. Continue when
+         new Pending task done
+	     new pending opertaion done
+	     timer is about to complete
+  4. Look at pendingtimer. call any setimediate
+  5. Handle any close event  . ex readStream 
+8. Node event loop :- Single thread
+   Some of function /std libUv:- Not a single thread. run outside of event loop
+    Expensive function run out of event loop(Crypto,Fs)
+    uses thread pool . create 4 thread process 4 task
+9.  MutliThreading : give concurrency 
+      If 1 task taking 1sec
+	  then 2 task will take 2sec (depend on core) both will complete at same time
+10.LibUv delegate OS:-  Https request :- LibUv delegate rquest to OS. Os send the rquest Os handle the request. Event loop is free	
+   Everything around networking handle by OS  :- PendingOSTask 
+   
+11.Cluster mode:- Multiple copy of node running your server . multiple instance of server. MultiThreading - Reccommended
+   no of server instance should be equal to number of physical or logical core
+   PM2 use pm2 to handle cluster automatically
+12. Worker thread: Our app <===> worker thread communicate with post message and on message
+    Worker thread get executed out of event loop 
+13 Redis for caching. Util.promisfy make function promise	
+14 Puppeteer and jest is used for node integrated testing
+15 Continues Integration (Travis) :- Code get build test and autmatically get deployed
+  we do code in YAML its like JSON
+16 Require module check in node modules folder to its parent and cache the path :its caches the file
+17 In node we can run c++ code wiht node-gyp
+18: Node is best for I/O opertaions 
+    Not good for CPU Intensive processing like Image processing/video processing
+19 read url value :-  /home/:name
+     var name = req.params.name;
+   //  var name = req.query.name;  

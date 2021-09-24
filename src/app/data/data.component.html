@@ -2,7 +2,7 @@
     <mat-expansion-panel *ngFor="let data1 of data; let i =index">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                <h6>
+                <h6 class="question_question">
                     {{i+1}} {{data1.question}}
 
                 </h6>
@@ -10,12 +10,12 @@
         </mat-expansion-panel-header>
         <div class="text_background">
             <div *ngFor="let response of data1.responses">
-                <div class="question_value">
-                    <p> {{response.value}}</p>
+                <div>
+                    <p class="question_value"> {{response.value}}</p>
                 </div>
                 <div ngClass="mt5" *ngIf="response.image" class="code_snippet">
                      <mat-divider></mat-divider>
-                    <img [src]="imageBaseUrl + response.image">
+                    <img [ngStyle]="response.style" [src]="imageBaseUrl + response.image">
                      <mat-divider></mat-divider>
 
                 </div>

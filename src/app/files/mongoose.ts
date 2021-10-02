@@ -60,7 +60,7 @@ export const data = [{
 {
     question: "Model",
     responses: [{
-        value:"compiled from Schema definitions",
+        value: "compiled from Schema definitions",
         image: "/model.PNG",
     }]
 },
@@ -346,6 +346,28 @@ export const data = [{
         value: "Perform multiple operation if one fail undo all of them",
 
     }]
+},
+{
+    question: 'MongoDb query',
+    responses: [
+        {
+            style: {
+                width: '100%'
+            },
+            image: '/mongoDbQuery.png'
+        }
+    ]
+},
+{
+    question: 'MongDb Cheat shit',
+    responses: [
+        {
+            style: {
+                width: '100%'
+            },
+            image: '/mongoDbCheatShit.png'
+        }
+    ]
 }
 
 ]
